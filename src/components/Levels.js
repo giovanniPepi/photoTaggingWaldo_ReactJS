@@ -5,16 +5,16 @@ import bg4 from "../img/waldo_level-4.jpg";
 import bg5 from "../img/waldo_level-5.jpg";
 import bg6 from "../img/waldo_level-6.jpg";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Level = ({ lvl, setLvl }) => {
   const [bgImg, setbgImg] = useState({
-    level1: bg1,
-    level2: bg2,
-    level3: bg3,
-    level4: bg4,
-    level5: bg5,
-    level6: bg6,
+    1: bg1,
+    2: bg2,
+    3: bg3,
+    4: bg4,
+    5: bg5,
+    6: bg6,
   });
 
   // const setLevel = () => {};
@@ -23,6 +23,7 @@ const Level = ({ lvl, setLvl }) => {
   return (
     <section className="waldoLevel">
       level loaded: <h1>{lvl}</h1>
+      <img src={bgImg[lvl]} alt="Waldo Scenario" />
     </section>
   );
 };
