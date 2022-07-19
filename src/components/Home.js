@@ -4,7 +4,19 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 
 import Level from "./Levels";
-const Home = ({ lvl, setLvl, possibleLvls, imgDatabase, avatarDatabase }) => {
+const Home = ({
+  lvl,
+  setLvl,
+  possibleLvls,
+  imgDatabase,
+  avatarDatabase,
+  inHome,
+  setInHome,
+}) => {
+  useEffect(() => {
+    setInHome(true);
+  });
+
   return (
     <main className="home">
       <section className="levelGrid">
@@ -12,7 +24,7 @@ const Home = ({ lvl, setLvl, possibleLvls, imgDatabase, avatarDatabase }) => {
           return (
             <Link
               key={uniqid()}
-              onClick={() => setLvl(item)}
+              onClick={() => setLvl(item - 1)}
               to={`/level/${item}`}
               element={<Level id={uniqid()} lvl={item} setLvl={setLvl} />}
             >

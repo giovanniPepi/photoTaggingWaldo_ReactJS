@@ -18,6 +18,7 @@ import wizardMini from "../src/img/wizardAvatar.jpg";
 
 const App = () => {
   const [lvl, setLvl] = useState(0);
+  const [inHome, setInHome] = useState(false);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
 
   const imgDatabase = [
@@ -41,8 +42,9 @@ const App = () => {
       <Header
         lvl={lvl}
         setLvl={setLvl}
-        imgDatabase={imgDatabase}
+        imgDatabase={imgDatabase[lvl]}
         avatarDatabase={avatarDatabase}
+        inHome={inHome}
       />
       <Routes>
         <Route
@@ -54,6 +56,8 @@ const App = () => {
               possibleLvls={possibleLvls}
               imgDatabase={imgDatabase}
               avatarDatabase={avatarDatabase}
+              inHome={inHome}
+              setInHome={setInHome}
             />
           }
         />
@@ -68,6 +72,8 @@ const App = () => {
                   setLvl={setLvl}
                   imgDatabase={imgDatabase[item - 1]}
                   avatarDatabase={avatarDatabase}
+                  inHome={inHome}
+                  setInHome={setInHome}
                 />
               }
             />

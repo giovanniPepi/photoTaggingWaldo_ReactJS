@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
 
-const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase }) => {
+const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase, inHome }) => {
+  console.log(inHome);
+
   return (
     <section className="header">
-      {lvl === 0 ? (
+      {inHome ? (
         <>
-          <div className="headerLeaderboard">Leaderboard</div>
           <Link to="/">
             <div className="headerAvatarCont">
               <img src={waldoHeader} alt="Waldo" className="waldoHeaderImg" />
@@ -19,31 +20,32 @@ const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase }) => {
           </Link>
         </>
       ) : null}
-      {lvl > 0 ? (
+
+      {inHome === false ? (
         <>
           <div className="charactersPresent">
-            {imgDatabase[lvl - 1]["waldo"] === true ? (
+            {imgDatabase["waldo"] === true ? (
               <img
                 src={avatarDatabase["waldo"]}
                 alt="waldo"
                 className="avatar"
               />
             ) : null}
-            {imgDatabase[lvl - 1]["odlaw"] === true ? (
+            {imgDatabase["odlaw"] === true ? (
               <img
                 src={avatarDatabase["odlaw"]}
                 alt="odlaw"
                 className="avatar"
               />
             ) : null}
-            {imgDatabase[lvl - 1]["wenda"] === true ? (
+            {imgDatabase["wenda"] === true ? (
               <img
                 src={avatarDatabase["wenda"]}
                 alt="waldo"
                 className="avatar"
               />
             ) : null}
-            {imgDatabase[lvl - 1]["wizard"] === true ? (
+            {imgDatabase["wizard"] === true ? (
               <img
                 src={avatarDatabase["wizard"]}
                 alt="wizard"
@@ -51,7 +53,7 @@ const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase }) => {
               />
             ) : null}
           </div>
-          <p className="headerLevel">Level: {lvl}</p>
+          <p className="headerLevel">Level {lvl}</p>
           <Link to="/">
             <button onClick={() => setLvl(0)}>Go back</button>
           </Link>
