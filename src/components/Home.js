@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+
 import Level from "./Levels";
 const Home = ({ lvl, setLvl, possibleLvls, imgDatabase, avatarDatabase }) => {
-  const handleLevel = (n) => {
-    setLvl(n);
-  };
-
   return (
     <main className="home">
       <section className="levelGrid">
@@ -14,7 +12,7 @@ const Home = ({ lvl, setLvl, possibleLvls, imgDatabase, avatarDatabase }) => {
           return (
             <Link
               key={uniqid()}
-              onClick={() => handleLevel(item)}
+              onClick={() => setLvl(item)}
               to={`/level/${item}`}
               element={<Level id={uniqid()} lvl={item} setLvl={setLvl} />}
             >

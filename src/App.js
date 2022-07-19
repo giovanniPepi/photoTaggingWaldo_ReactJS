@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -19,6 +19,7 @@ import wizardMini from "../src/img/wizardAvatar.jpg";
 const App = () => {
   const [lvl, setLvl] = useState(0);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
+
   const imgDatabase = [
     { 1: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
     { 2: bg2, waldo: true, odlaw: true, wenda: true, wizard: true },
@@ -27,6 +28,7 @@ const App = () => {
     { 5: bg5, waldo: true, odlaw: true, wenda: true, wizard: true },
     { 6: bg6, waldo: true, odlaw: false, wenda: false, wizard: false },
   ];
+
   const avatarDatabase = {
     waldo: waldoMini,
     odlaw: odlawMini,
@@ -36,7 +38,12 @@ const App = () => {
 
   return (
     <HashRouter basename="/">
-      <Header lvl={lvl} />
+      <Header
+        lvl={lvl}
+        setLvl={setLvl}
+        imgDatabase={imgDatabase}
+        avatarDatabase={avatarDatabase}
+      />
       <Routes>
         <Route
           path="/"

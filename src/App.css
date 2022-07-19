@@ -63,12 +63,9 @@ p {
   .avatar {
     width: 3rem;
   }
-  .levelInfo {
-    display: flex;
-  }
-  .waldoLevel {
-    display: flex;
-    flex-direction: column;
+  .waldoLvl {
+    display: grid;
+    grid-template-columns: 1fr;
   }
   .levelGrid {
     display: grid;
@@ -106,6 +103,10 @@ p {
     border-radius: var(--roundBorder);
     height: 2rem;
     object-fit: contain;
+  }
+  .scenarioImg {
+    justify-self: center;
+    max-width: 90%;
   }
 }
 
