@@ -18,10 +18,10 @@ const Home = ({ lvl, setLvl, possibleLvls, imgDatabase, avatarDatabase }) => {
               to={`/level/${item}`}
               element={<Level id={uniqid()} lvl={item} setLvl={setLvl} />}
             >
-              <div className="levelContainer">
+              <div className="lvlContainer">
                 <div className="infoLvl">
                   <p>Level {item}</p>
-                  <div className="avatarsLevel">
+                  <div className="avatarsLvl">
                     {imgDatabase[item - 1]["waldo"] === true ? (
                       <img
                         src={avatarDatabase["waldo"]}

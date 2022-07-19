@@ -1,5 +1,6 @@
 :root {
   --normalGap: 1rem;
+  --mediumGap: 0.5rem;
   --tinyGap: 0.2rem;
   --redWaldo: #ee2d24;
   --blueWaldo: #009cdd;
@@ -71,7 +72,13 @@ p {
   .levelGrid {
     display: grid;
     gap: var(--normalGap);
-    grid-template-columns: repeat(3, minmax(500px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    margin: 2rem;
+  }
+  .lvlContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mediumGap);
   }
   .lvlImgGrid {
     width: 100%;
@@ -83,8 +90,13 @@ p {
     justify-content: space-between;
     align-items: center;
   }
+  .avatarsLvl {
+    display: flex;
+    gap: var(--tinyGap);
+  }
   .avatarLevel {
-    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
   }
 }
 
