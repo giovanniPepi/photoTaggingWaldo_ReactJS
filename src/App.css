@@ -1,7 +1,16 @@
 :root {
-  background-color: rgb(135, 135, 135);
+  --normalGap: 1rem;
+  --tinyGap: 0.2rem;
+  --redWaldo: #ee2d24;
+  --blueWaldo: #009cdd;
+  --color1: #773f41;
 }
-
+body {
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 body {
   min-height: 100vh;
 }
@@ -17,11 +26,31 @@ body > * {
   background-color: white;
 }
 
+.headerTitle {
+  display: flex;
+  gap: var(--tinyGap);
+}
+.red,
+.headerLeaderboard,
+.levelLoadedRed {
+  color: var(--redWaldo);
+}
+.blue,
+.headerLevel,
+.levelLoaded {
+  color: var(--blueWaldo);
+}
+
 @media screen and (min-width: 900px) {
+  .headerAvatarCont {
+    display: flex;
+    align-items: center;
+    gap: var(--normalGap);
+  }
   .header {
     border: 1px solid black;
     min-height: 10vh;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
   }
   .waldoHeaderImg {

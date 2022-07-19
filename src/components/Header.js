@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
+
 const Header = ({ lvl }) => {
   return (
     <section className="header">
-      <div>Leaderboard</div>
+      <div className="headerLeaderboard">Leaderboard</div>
       <Link to="/">
-        <img src={waldoHeader} alt="Waldo" className="waldoHeaderImg" />
+        <div className="headerAvatarCont">
+          <img src={waldoHeader} alt="Waldo" className="waldoHeaderImg" />
+          <div className="headerTitle">
+            <p className="red">Where's</p>
+            <p className="blue">Waldo</p>
+          </div>
+        </div>
       </Link>
-      <div className="headerTitle">Where's Waldo?</div>
-      <p>Level: {lvl}</p>
+      <p className="headerLevel">Level: {lvl}</p>
     </section>
   );
 };
