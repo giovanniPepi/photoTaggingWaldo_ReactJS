@@ -11,18 +11,28 @@ import bg3 from "../src/img/waldo_level-3.jpg";
 import bg4 from "../src/img/waldo_level-4.jpg";
 import bg5 from "../src/img/waldo_level-5.jpg";
 import bg6 from "../src/img/waldo_level-6.jpg";
+import waldoMini from "../src/img/waldoAvatar.jpg";
+import odlawMini from "../src/img/OdlawAvatar.jpg";
+import wendaMini from "../src/img/wenda.jpg";
+import wizardMini from "../src/img/wizardAvatar.jpg";
 
 const App = () => {
   const [lvl, setLvl] = useState(0);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
   const imgDatabase = [
-    { 1: bg1, waldo: true, oddlaw: true, wenda: false, wizard: true },
-    { 2: bg2, waldo: true, oddlaw: true, wenda: true, wizard: true },
-    { 3: bg3, waldo: true, oddlaw: false, wenda: false, wizard: false },
-    { 4: bg4, waldo: true, oddlaw: true, wenda: false, wizard: false },
-    { 5: bg5, waldo: true, oddlaw: true, wenda: true, wizard: true },
-    { 6: bg6, waldo: true, oddlaw: false, wenda: false, wizard: false },
+    { 1: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
+    { 2: bg2, waldo: true, odlaw: true, wenda: true, wizard: true },
+    { 3: bg3, waldo: true, odlaw: false, wenda: false, wizard: false },
+    { 4: bg4, waldo: true, odlaw: true, wenda: false, wizard: false },
+    { 5: bg5, waldo: true, odlaw: true, wenda: true, wizard: true },
+    { 6: bg6, waldo: true, odlaw: false, wenda: false, wizard: false },
   ];
+  const avatarDatabase = {
+    waldo: waldoMini,
+    odlaw: odlawMini,
+    wenda: wendaMini,
+    wizard: wizardMini,
+  };
 
   return (
     <HashRouter basename="/">
@@ -31,7 +41,13 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Home lvl={lvl} setLvl={setLvl} possibleLvls={possibleLvls} />
+            <Home
+              lvl={lvl}
+              setLvl={setLvl}
+              possibleLvls={possibleLvls}
+              imgDatabase={imgDatabase}
+              avatarDatabase={avatarDatabase}
+            />
           }
         />
         {possibleLvls.map((item) => {
@@ -44,6 +60,7 @@ const App = () => {
                   lvl={item}
                   setLvl={setLvl}
                   imgDatabase={imgDatabase[item - 1]}
+                  avatarDatabase={avatarDatabase}
                 />
               }
             />

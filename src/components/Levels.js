@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Level = ({ lvl, setLvl, imgDatabase }) => {
-  console.log(lvl, imgDatabase);
+const Level = ({ lvl, setLvl, imgDatabase, avatarDatabase }) => {
+  console.log(lvl, imgDatabase, avatarDatabase);
 
   return (
     <section className="waldoLevel">
-      <p className="levelLoaded">
-        level loaded: <h1 className="levelLoadedRed">{lvl}</h1>{" "}
-      </p>
-      <Link to="/">Go back</Link>
-      {imgDatabase["waldo"] === true ? <div>has waldo</div> : null}
-      {imgDatabase["oddlaw"] === true ? <div>has oddlaw</div> : null}
-      {imgDatabase["wenda"] === true ? <div>has oddlaw</div> : null}
-      {imgDatabase["wizard"] === true ? <div>has wizard</div> : null}
+      <div className="levelInfo">
+        <div className="levelLoaded">
+          level loaded: <p className="levelLoadedRed">{lvl}</p>
+        </div>
+        {imgDatabase["waldo"] === true ? (
+          <img src={avatarDatabase["waldo"]} alt="waldo" className="avatar" />
+        ) : null}
+        {imgDatabase["oddlaw"] === true ? (
+          <img src={avatarDatabase["odlaw"]} alt="odlaw" className="avatar" />
+        ) : null}
+        {imgDatabase["wenda"] === true ? (
+          <img src={avatarDatabase["wenda"]} alt="waldo" className="avatar" />
+        ) : null}
+        {imgDatabase["wizard"] === true ? (
+          <img src={avatarDatabase["waldo"]} alt="wizard" className="avatar" />
+        ) : null}
+        <Link to="/">Go back</Link>
+      </div>
       <img className="scenaroImg" src={imgDatabase[lvl]} alt="Waldo Scenario" />
     </section>
   );
