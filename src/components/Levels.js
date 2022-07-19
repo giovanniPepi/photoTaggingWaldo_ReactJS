@@ -16,7 +16,7 @@ const Level = ({
     <section className="waldoLvl">
       <img
         className="scenarioImg"
-        src={imgDatabase[lvl]}
+        src={imgDatabase["photo"]}
         alt="Waldo Scenario"
       />
     </section>

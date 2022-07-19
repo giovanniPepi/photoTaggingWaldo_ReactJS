@@ -17,17 +17,17 @@ import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
 
 const App = () => {
-  const [lvl, setLvl] = useState(0);
+  const [lvl, setLvl] = useState(1);
   const [inHome, setInHome] = useState(false);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
 
   const imgDatabase = [
-    { 1: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
-    { 2: bg2, waldo: true, odlaw: true, wenda: true, wizard: true },
-    { 3: bg3, waldo: true, odlaw: false, wenda: false, wizard: false },
-    { 4: bg4, waldo: true, odlaw: true, wenda: false, wizard: false },
-    { 5: bg5, waldo: true, odlaw: true, wenda: true, wizard: true },
-    { 6: bg6, waldo: true, odlaw: false, wenda: false, wizard: false },
+    { photo: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
+    { photo: bg2, waldo: true, odlaw: true, wenda: true, wizard: true },
+    { photo: bg3, waldo: true, odlaw: false, wenda: false, wizard: false },
+    { photo: bg4, waldo: true, odlaw: true, wenda: false, wizard: false },
+    { photo: bg5, waldo: true, odlaw: true, wenda: true, wizard: true },
+    { photo: bg6, waldo: true, odlaw: false, wenda: false, wizard: false },
   ];
 
   const avatarDatabase = {
@@ -42,7 +42,7 @@ const App = () => {
       <Header
         lvl={lvl}
         setLvl={setLvl}
-        imgDatabase={imgDatabase[lvl]}
+        imgDatabase={imgDatabase[lvl - 1]}
         avatarDatabase={avatarDatabase}
         inHome={inHome}
       />

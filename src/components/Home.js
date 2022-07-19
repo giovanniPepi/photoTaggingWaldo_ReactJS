@@ -24,7 +24,7 @@ const Home = ({
           return (
             <Link
               key={uniqid()}
-              onClick={() => setLvl(item - 1)}
+              onClick={() => setLvl(item)}
               to={`/level/${item}`}
               element={<Level id={uniqid()} lvl={item} setLvl={setLvl} />}
             >
@@ -63,7 +63,7 @@ const Home = ({
                   </div>
                 </div>
                 <img
-                  src={imgDatabase[item - 1][item]}
+                  src={imgDatabase[item - 1]["photo"]}
                   alt={`level ${item}`}
                   className="lvlImgGrid"
                 />
