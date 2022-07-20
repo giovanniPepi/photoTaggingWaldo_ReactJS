@@ -8,8 +8,6 @@
   --yellow: #ffef42;
   --roundBorder: 0.5rem;
 }
-body {
-}
 a {
   text-decoration: none;
   color: inherit;
@@ -20,9 +18,47 @@ body {
 
 body,
 body > *,
-p {
+p,
+button {
   margin: 0;
   padding: 0;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  align-items: center;
+  appearance: button;
+  background-color: var(--blueWaldo);
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue", sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-22:active {
+  background-color: #006ae8;
+}
+
+.button-22:hover {
+  background-color: #1c84ff;
 }
 
 .header {
@@ -43,6 +79,8 @@ p {
 .levelLoaded {
   color: var(--blueWaldo);
 }
+.gobackBtn {
+}
 
 @media screen and (min-width: 900px) {
   .headerAvatarCont {
@@ -51,7 +89,6 @@ p {
     gap: var(--normalGap);
   }
   .header {
-    border: 1px solid black;
     min-height: 10vh;
     justify-content: space-evenly;
     align-items: center;

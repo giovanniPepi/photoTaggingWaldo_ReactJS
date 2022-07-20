@@ -54,7 +54,7 @@ const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase, inHome }) => {
           </div>
           <p className="headerLevel">Level {lvl}</p>
           <Link to="/">
-            <button onClick={() => setLvl(0)}>Go back</button>
+            <button className="gobackBtn">Go back</button>
           </Link>
         </>
       ) : null}
