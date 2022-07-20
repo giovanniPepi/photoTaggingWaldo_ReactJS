@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import { Link } from "react-router-dom";
-import Header from "./Header";
-
 import Level from "./Levels";
+
 const Home = ({
   lvl,
   setLvl,

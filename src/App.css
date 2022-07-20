@@ -79,7 +79,27 @@ button {
 .levelLoaded {
   color: var(--blueWaldo);
 }
-.gobackBtn {
+
+.dropdownMenu {
+  position: fixed;
+  z-index: 10000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+}
+.dropdownMenu .option {
+  padding: 8px 10px;
+  font-size: 15px;
+  color: #eee;
+  cursor: pointer;
+  border-radius: inherit;
+}
+.dropdownMenu .option:hover {
+  background: #343434;
+}
+.dropdownMenu.visible {
+  display: block;
 }
 
 @media screen and (min-width: 900px) {
