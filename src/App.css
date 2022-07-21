@@ -81,12 +81,10 @@ button {
 }
 
 .dropdownMenu {
-  position: fixed;
   z-index: 10000;
   width: 150px;
   background: hsl(0, 2%, 10%);
   border-radius: 5px;
-  display: none;
 }
 .dropdownMenu .option {
   padding: 8px 10px;
@@ -99,7 +97,10 @@ button {
   background: #343434;
 }
 .dropdownMenu.visible {
-  display: block;
+  position: absolute;
+}
+.dropdownMenu.hidden {
+  display: none;
 }
 
 @media screen and (min-width: 900px) {
@@ -120,8 +121,7 @@ button {
     width: 3rem;
   }
   .waldoLvl {
-    display: grid;
-    grid-template-columns: 1fr;
+    position: relative;
   }
   .levelGrid {
     display: grid;
@@ -162,7 +162,8 @@ button {
   }
   .scenarioImg {
     justify-self: center;
-    max-width: 90%;
+    min-width: 100%;
+    display: block;
   }
 }
 

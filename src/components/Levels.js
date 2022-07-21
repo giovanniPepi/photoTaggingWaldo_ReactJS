@@ -4,6 +4,7 @@ import DropdownMenu from "./DropdownMenu";
 const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
+  const [clickLocation, setClickLocation] = useState({ left: "0%", top: "0%" });
 
   useEffect(() => {
     setInHome(false);
@@ -25,7 +26,14 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
     const coords = getImgLocation(e);
     console.log(coords);
     setCoords(coords);
+    handleClickLocation(coords);
     setShow(true);
+  };
+
+  const handleClickLocation = (coords) => {
+    const { xCoord, yCoord } = coords;
+    const updatedCoords = { left: xCoord + "%", top: yCoord + "%" };
+    setClickLocation(updatedCoords);
   };
 
   return (
@@ -35,12 +43,12 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
         src={imgDatabase["photo"]}
         alt="Waldo Scenario"
         onClick={imageClick}
-        onMouseLeave={() => setShow(false)}
       />
       <DropdownMenu
         show={show}
         imgDatabase={imgDatabase}
         avatarDatabase={avatarDatabase}
+        clickLocation={clickLocation}
       />
     </section>
   );
