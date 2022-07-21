@@ -84,7 +84,7 @@ button {
   position: fixed;
   z-index: 10000;
   width: 150px;
-  background: #1b1a1a;
+  background: hsl(0, 2%, 10%);
   border-radius: 5px;
   display: none;
 }

@@ -1,21 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 
-import { Link } from "react-router-dom";
+const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [show, setShow] = useState(false);
 
-const Level = ({
-  lvl,
-  setLvl,
-  imgDatabase,
-  avatarDatabase,
-  inHome,
-  setInHome,
-}) => {
   useEffect(() => {
     setInHome(false);
   });
-
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
@@ -33,6 +25,7 @@ const Level = ({
     const coords = getImgLocation(e);
     console.log(coords);
     setCoords(coords);
+    setShow(true);
   };
 
   return (
@@ -42,6 +35,12 @@ const Level = ({
         src={imgDatabase["photo"]}
         alt="Waldo Scenario"
         onClick={imageClick}
+        onMouseLeave={() => setShow(false)}
+      />
+      <DropdownMenu
+        show={show}
+        imgDatabase={imgDatabase}
+        avatarDatabase={avatarDatabase}
       />
     </section>
   );

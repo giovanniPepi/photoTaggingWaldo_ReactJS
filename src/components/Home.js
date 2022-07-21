@@ -25,7 +25,14 @@ const Home = ({
               key={uniqid()}
               onClick={() => setLvl(item)}
               to={`/level/${item}`}
-              element={<Level id={uniqid()} lvl={item} setLvl={setLvl} />}
+              element={
+                <Level
+                  id={uniqid()}
+                  lvl={item}
+                  setLvl={setLvl}
+                  imgDatabase={imgDatabase}
+                />
+              }
             >
               <div className="lvlContainer">
                 <div className="infoLvl">
