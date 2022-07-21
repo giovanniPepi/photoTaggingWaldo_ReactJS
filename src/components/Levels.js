@@ -15,7 +15,7 @@ const Level = ({
     setInHome(false);
   });
 
-  const [coords, setCoords] = useState();
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper

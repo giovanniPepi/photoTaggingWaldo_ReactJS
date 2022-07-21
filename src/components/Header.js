@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
 
 const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase, inHome }) => {
-  console.log(imgDatabase);
   return (
     <section className="header">
       {inHome ? (
