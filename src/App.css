@@ -83,18 +83,19 @@ button {
 .dropdownMenu {
   z-index: 10000;
   width: 150px;
-  background: hsl(0, 2%, 10%);
+  background-color: white;
   border-radius: 5px;
+  border: 1px solid var(--blueWaldo);
 }
 .dropdownMenu .option {
   padding: 8px 10px;
   font-size: 15px;
-  color: #eee;
+  color: black;
   cursor: pointer;
   border-radius: inherit;
 }
 .dropdownMenu .option:hover {
-  background: #343434;
+  border: 1px solid var(--redWaldo);
 }
 .dropdownMenu.visible {
   position: absolute;
@@ -119,6 +120,9 @@ button {
   }
   .avatar {
     width: 3rem;
+  }
+  .avatarMini {
+    height: 1.5rem;
   }
   .waldoLvl {
     position: relative;
@@ -162,7 +166,8 @@ button {
   }
   .scenarioImg {
     justify-self: center;
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
     display: block;
   }
 }

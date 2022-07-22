@@ -23,10 +23,10 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   };
 
   const imageClick = (e) => {
-    const coords = getImgLocation(e);
-    console.log(coords);
-    setCoords(coords);
-    handleClickLocation(coords);
+    const newCoords = getImgLocation(e);
+    setCoords(newCoords);
+    console.log(newCoords);
+    handleClickLocation(newCoords);
     setShow(true);
   };
 
