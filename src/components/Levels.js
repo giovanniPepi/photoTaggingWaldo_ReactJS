@@ -45,6 +45,7 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
       />
       <DropdownMenu
         show={show}
+        setShow={setShow}
         imgDatabase={imgDatabase}
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}

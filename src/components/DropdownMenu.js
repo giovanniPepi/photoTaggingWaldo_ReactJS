@@ -2,6 +2,7 @@ import React from "react";
 
 const DropdownMenu = ({
   show,
+  setShow,
   imgDatabase,
   avatarDatabase,
   lvl,
@@ -10,6 +11,7 @@ const DropdownMenu = ({
 }) => {
   const handleCharacterChoice = (choice) => {
     console.log(choice, coords);
+    setShow(false);
   };
 
   return (
