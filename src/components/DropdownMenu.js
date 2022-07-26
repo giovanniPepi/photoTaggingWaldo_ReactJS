@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const DropdownMenu = ({
   show,
+  setShow,
   imgDatabase,
   avatarDatabase,
   lvl,
   clickLocation,
+  coords,
 }) => {
+  const handleCharacterChoice = (choice) => {
+    console.log(choice, coords);
+    setShow(false);
+  };
+
   return (
     <>
       {show ? (
         <div className="dropdownMenu visible" style={clickLocation}>
           {imgDatabase.waldo && (
-            <div className="option">
+            <div
+              className="option"
+              onClick={() => handleCharacterChoice("waldo")}
+            >
               <img
                 src={avatarDatabase.waldo}
                 alt="waldo"
@@ -22,7 +32,10 @@ const DropdownMenu = ({
             </div>
           )}
           {imgDatabase.odlaw && (
-            <div className="option">
+            <div
+              className="option"
+              onClick={() => handleCharacterChoice("odlaw")}
+            >
               <img
                 src={avatarDatabase.odlaw}
                 alt="odlaw"
@@ -32,7 +45,10 @@ const DropdownMenu = ({
             </div>
           )}
           {imgDatabase.wenda && (
-            <div className="option">
+            <div
+              className="option"
+              onClick={() => handleCharacterChoice("wenda")}
+            >
               <img
                 src={avatarDatabase.wenda}
                 alt="wenda"
@@ -42,7 +58,10 @@ const DropdownMenu = ({
             </div>
           )}
           {imgDatabase.wizard && (
-            <div className="option">
+            <div
+              className="option"
+              onClick={() => handleCharacterChoice("wizard")}
+            >
               <img
                 src={avatarDatabase.wizard}
                 alt="wizard"

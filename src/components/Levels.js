@@ -25,7 +25,6 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   const imageClick = (e) => {
     const newCoords = getImgLocation(e);
     setCoords(newCoords);
-    console.log(newCoords);
     handleClickLocation(newCoords);
     setShow(true);
   };
@@ -46,9 +45,11 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
       />
       <DropdownMenu
         show={show}
+        setShow={setShow}
         imgDatabase={imgDatabase}
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}
+        coords={coords}
       />
     </section>
   );
