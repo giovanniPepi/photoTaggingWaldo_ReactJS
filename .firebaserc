@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "wherewaldo",
+    "waldo": "wherewaldo-9d009"
+  },
+  "targets": {},
+  "etags": {}
+}

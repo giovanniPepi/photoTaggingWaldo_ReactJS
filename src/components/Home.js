@@ -11,6 +11,7 @@ const Home = ({
   avatarDatabase,
   inHome,
   setInHome,
+  firebase,
 }) => {
   useEffect(() => {
     setInHome(true);
