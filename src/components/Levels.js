@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import { collection, getDocs, setDoc, doc, getDoc } from "firebase/firestore";
 import DropdownMenu from "./DropdownMenu";
+import { db } from "../firebase";
 
 const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -10,6 +12,30 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
     setInHome(false);
   });
 
+  // Firebase
+  const colRef = collection(db, "coords");
+
+  let coordList = [];
+
+  const getCoordsFromFirestore = async () => {
+    const docs = await getDocs(colRef);
+    docs.forEach((doc) => {
+      coordList.push({ ...doc.data(), id: doc.id });
+    });
+  };
+  getCoordsFromFirestore();
+  console.log(coordList);
+
+  /* .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        coordList.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(coordList);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+ */
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
     const xCoord = Math.round(

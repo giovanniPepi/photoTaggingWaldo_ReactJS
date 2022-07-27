@@ -1,20 +1,23 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.REACT_APP_FIREBASE_APPID,
+  apiKey: "AIzaSyDpK2OhU8pf7NKSGzNK62cU_PxEdcaX63E",
+
+  authDomain: "wherewaldo-9d009.firebaseapp.com",
+
+  projectId: "wherewaldo-9d009",
+
+  storageBucket: "wherewaldo-9d009.appspot.com",
+
+  messagingSenderId: "815714163149",
+
+  appId: "1:815714163149:web:0c5a103cdc4da7bb6b8c84",
 };
 
-let instance = null;
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-export default function getFirebase() {
-  if (instance) return instance;
-  instance = initializeApp(firebaseConfig);
-  return instance;
-}
+export { db, storage };

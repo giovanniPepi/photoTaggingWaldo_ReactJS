@@ -15,12 +15,8 @@ import waldoMini from "../src/img/waldoAvatar.jpg";
 import odlawMini from "../src/img/OdlawAvatar.jpg";
 import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
-import useFirebase from "./useFirebase";
 
 const App = () => {
-  // Firebase
-  const firebase = useFirebase();
-
   const [lvl, setLvl] = useState(1);
   const [inHome, setInHome] = useState(false);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
@@ -62,7 +58,6 @@ const App = () => {
               avatarDatabase={avatarDatabase}
               inHome={inHome}
               setInHome={setInHome}
-              firebase={firebase}
             />
           }
         />
