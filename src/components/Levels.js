@@ -17,7 +17,7 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
 
   const coordList = [];
 
-  const getCoordsFromFirestore = async (character) => {
+  const getCoordsFromFirestore = async (character, level) => {
     const docs = await getDocs(colRef);
     docs.forEach((doc) => {
       coordList.push({ ...doc.data() });
@@ -25,41 +25,41 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
     switch (character) {
       case "waldo":
         const waldoPosition = {
-          x: coordList[0][character][0]["_lat"],
-          y: coordList[0][character][0]["_long"],
+          x: coordList[0]["waldo"][level]["x"],
+          y: coordList[0]["waldo"][level]["y"],
         };
-        console.log("waldo", waldoPosition);
+        console.log(waldoPosition);
         break;
       case "wenda":
         const wendaPosition = {
-          x: coordList[0][character][0]["_lat"],
-          y: coordList[0][character][0]["_long"],
+          x: coordList[0]["wenda"][level]["x"],
+          y: coordList[0]["wenda"][level]["y"],
         };
-        console.log("wenda", wendaPosition);
         break;
       case "wizard":
         const wizardPosition = {
-          x: coordList[0][character][0]["_lat"],
-          y: coordList[0][character][0]["_long"],
+          x: coordList[0]["wizard"][level]["x"],
+          y: coordList[0]["wizard"][level]["y"],
         };
-        console.log("wizard", wizardPosition);
         break;
       case "odlaw":
         const odlawPosition = {
-          x: coordList[0][character][0]["_lat"],
-          y: coordList[0][character][0]["_long"],
+          x: coordList[0]["odlaw"][level]["x"],
+          y: coordList[0]["odlaw"][level]["y"],
         };
-        console.log("odlaw", odlawPosition);
         break;
       default:
         console.log("error, no character position found");
     }
   };
 
+  getCoordsFromFirestore("waldo", 0);
+
+  /* 
   getCoordsFromFirestore("waldo");
-  getCoordsFromFirestore("wenda");
+  getCoordsFromFirestore("wenda");  
   getCoordsFromFirestore("wizard");
-  getCoordsFromFirestore("odlaw");
+  getCoordsFromFirestore("odlaw"); */
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper

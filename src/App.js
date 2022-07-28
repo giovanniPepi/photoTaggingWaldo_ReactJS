@@ -23,9 +23,9 @@ const App = () => {
 
   const imgDatabase = [
     { photo: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
-    { photo: bg2, waldo: true, odlaw: true, wenda: true, wizard: true },
-    { photo: bg3, waldo: true, odlaw: false, wenda: false, wizard: false },
-    { photo: bg4, waldo: true, odlaw: true, wenda: false, wizard: false },
+    { photo: bg2, waldo: true, odlaw: false, wenda: false, wizard: false },
+    { photo: bg3, waldo: true, odlaw: true, wenda: true, wizard: true },
+    { photo: bg4, waldo: true, odlaw: true, wenda: true, wizard: false },
     { photo: bg5, waldo: true, odlaw: true, wenda: true, wizard: true },
     { photo: bg6, waldo: true, odlaw: false, wenda: false, wizard: false },
   ];
