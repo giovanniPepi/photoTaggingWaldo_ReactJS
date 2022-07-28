@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { collection, getDocs, setDoc, doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import DropdownMenu from "./DropdownMenu";
 import { db } from "../firebase";
 
@@ -7,69 +7,94 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
   const [clickLocation, setClickLocation] = useState({ left: "0%", top: "0%" });
+  const [chosenCharacter, setChosenCharacter] = useState("");
 
   useEffect(() => {
+    console.log("triggered");
+
+    // handles show home
     setInHome(false);
-  });
 
-  // Firebase
-  const colRef = collection(db, "coords");
+    // Firebase
+    const colRef = collection(db, "coords");
 
-  const coordList = [];
+    const coordList = [];
 
-  const getCoordsFromFirestore = async (character, level) => {
-    const docs = await getDocs(colRef);
-    docs.forEach((doc) => {
-      coordList.push({ ...doc.data() });
-    });
-    switch (character) {
-      case "waldo":
-        const waldoPosition = {
-          x: coordList[0]["waldo"][level]["x"],
-          y: coordList[0]["waldo"][level]["y"],
-        };
-        console.log(waldoPosition);
-        break;
-      case "wenda":
-        const wendaPosition = {
-          x: coordList[0]["wenda"][level]["x"],
-          y: coordList[0]["wenda"][level]["y"],
-        };
-        break;
-      case "wizard":
-        const wizardPosition = {
-          x: coordList[0]["wizard"][level]["x"],
-          y: coordList[0]["wizard"][level]["y"],
-        };
-        break;
-      case "odlaw":
-        const odlawPosition = {
-          x: coordList[0]["odlaw"][level]["x"],
-          y: coordList[0]["odlaw"][level]["y"],
-        };
-        break;
-      default:
-        console.log("error, no character position found");
-    }
-  };
+    const getCoordsFromFirestore = async (character, lvl) => {
+      const docs = await getDocs(colRef);
+      docs.forEach((doc) => {
+        coordList.push({ ...doc.data() });
+      });
+      switch (character) {
+        case "waldo":
+          const waldoPosition = {
+            x: coordList[0]["waldo"][lvl]["x"],
+            y: coordList[0]["waldo"][lvl]["y"],
+          };
+          return waldoPosition;
+        case "wenda":
+          const wendaPosition = {
+            x: coordList[0]["wenda"][lvl]["x"],
+            y: coordList[0]["wenda"][lvl]["y"],
+          };
+          return wendaPosition;
+        case "wizard":
+          const wizardPosition = {
+            x: coordList[0]["wizard"][lvl]["x"],
+            y: coordList[0]["wizard"][lvl]["y"],
+          };
+          return wizardPosition;
+        case "odlaw":
+          const odlawPosition = {
+            x: coordList[0]["odlaw"][lvl]["x"],
+            y: coordList[0]["odlaw"][lvl]["y"],
+          };
+          return odlawPosition;
+        default:
+          console.log("error, no character position found");
+      }
+    };
 
-  getCoordsFromFirestore("waldo", 0);
+    const validateChosenCoords = async (chosenCharacter, lvl) => {
+      const serverCoords = await getCoordsFromFirestore(
+        chosenCharacter,
+        lvl - 1
+      );
+      const xPair = [coords["x"], serverCoords["x"]];
+      // console.log(xPair);
+      const yPair = [coords["y"], serverCoords["y"]];
+      // console.log(yPair);
 
-  /* 
-  getCoordsFromFirestore("waldo");
-  getCoordsFromFirestore("wenda");  
-  getCoordsFromFirestore("wizard");
-  getCoordsFromFirestore("odlaw"); */
+      console.log("clicked: ", coords, "target: ", serverCoords);
+
+      // logic to search for coords nearby, since a character may occupy serveral coords
+      if (
+        xPair[0] === xPair[1] ||
+        xPair[0] + 1 === xPair[1] ||
+        xPair[0] + 2 === xPair[1]
+      ) {
+        if (
+          yPair[0] === yPair[1] ||
+          yPair[0] + 1 === yPair[1] ||
+          yPair[0] + 2 === yPair[1] ||
+          yPair[0] + 3 === yPair[1]
+        ) {
+          alert(`you've found ${chosenCharacter}`);
+        }
+      }
+    };
+    validateChosenCoords(chosenCharacter, lvl);
+  }, [chosenCharacter, coords, lvl, setInHome]);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
-    const xCoord = Math.round(
+    const x = Math.round(
       (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
     );
-    const yCoord = Math.round(
+    const y = Math.round(
       (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
     );
-    const coords = { xCoord, yCoord };
+    const coords = { x, y };
     return coords;
   };
 
@@ -81,8 +106,8 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   };
 
   const handleClickLocation = (coords) => {
-    const { xCoord, yCoord } = coords;
-    const updatedCoords = { left: xCoord + "%", top: yCoord + "%" };
+    const { x, y } = coords;
+    const updatedCoords = { left: x + "%", top: y + "%" };
     setClickLocation(updatedCoords);
   };
 
@@ -97,10 +122,11 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
       <DropdownMenu
         show={show}
         setShow={setShow}
+        lvl={lvl}
         imgDatabase={imgDatabase}
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}
-        coords={coords}
+        setChosenCharacter={setChosenCharacter}
       />
     </section>
   );

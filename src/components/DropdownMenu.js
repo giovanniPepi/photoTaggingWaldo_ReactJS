@@ -7,11 +7,11 @@ const DropdownMenu = ({
   avatarDatabase,
   lvl,
   clickLocation,
-  coords,
+  setChosenCharacter,
 }) => {
-  const handleCharacterChoice = (choice) => {
-    console.log(choice, coords);
+  const handleCharacterChoice = async (character) => {
     setShow(false);
+    setChosenCharacter(character);
   };
 
   return (
