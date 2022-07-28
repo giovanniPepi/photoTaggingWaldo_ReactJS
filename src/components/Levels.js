@@ -15,27 +15,52 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   // Firebase
   const colRef = collection(db, "coords");
 
-  let coordList = [];
+  const coordList = [];
 
-  const getCoordsFromFirestore = async () => {
+  const getCoordsFromFirestore = async (character) => {
     const docs = await getDocs(colRef);
     docs.forEach((doc) => {
-      coordList.push({ ...doc.data(), id: doc.id });
+      coordList.push({ ...doc.data() });
     });
+    switch (character) {
+      case "waldo":
+        const waldoPosition = {
+          x: coordList[0][character][0]["_lat"],
+          y: coordList[0][character][0]["_long"],
+        };
+        console.log("waldo", waldoPosition);
+        break;
+      case "wenda":
+        const wendaPosition = {
+          x: coordList[0][character][0]["_lat"],
+          y: coordList[0][character][0]["_long"],
+        };
+        console.log("wenda", wendaPosition);
+        break;
+      case "wizard":
+        const wizardPosition = {
+          x: coordList[0][character][0]["_lat"],
+          y: coordList[0][character][0]["_long"],
+        };
+        console.log("wizard", wizardPosition);
+        break;
+      case "odlaw":
+        const odlawPosition = {
+          x: coordList[0][character][0]["_lat"],
+          y: coordList[0][character][0]["_long"],
+        };
+        console.log("odlaw", odlawPosition);
+        break;
+      default:
+        console.log("error, no character position found");
+    }
   };
-  getCoordsFromFirestore();
-  console.log(coordList);
 
-  /* .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        coordList.push({ ...doc.data(), id: doc.id });
-      });
-      console.log(coordList);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
- */
+  getCoordsFromFirestore("waldo");
+  getCoordsFromFirestore("wenda");
+  getCoordsFromFirestore("wizard");
+  getCoordsFromFirestore("odlaw");
+
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
     const xCoord = Math.round(
