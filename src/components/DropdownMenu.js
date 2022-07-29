@@ -9,13 +9,10 @@ const DropdownMenu = ({
   clickLocation,
   setChosenCharacter,
   chosenCharacter,
-  foundCharacters,
-  setFoundCharacters,
 }) => {
   const handleCharacterChoice = async (character) => {
     setShow(false);
     setChosenCharacter(character);
-    setFoundCharacters((foundCharacters) => [...foundCharacters, character]);
   };
 
   return (

@@ -19,8 +19,6 @@ const Level = ({
   const [clickLocation, setClickLocation] = useState({ left: "0%", top: "0%" });
 
   useEffect(() => {
-    console.log("triggered");
-
     // handles show home
     setInHome(false);
 
@@ -60,7 +58,12 @@ const Level = ({
           };
           return odlawPosition;
         default:
-          console.log("echar not found");
+          const defaultPosition = {
+            x: coordList[0]["odlaw"][lvl]["x"],
+            y: coordList[0]["odlaw"][lvl]["y"],
+          };
+          console.log("default or char not found");
+          return defaultPosition;
       }
     };
 
@@ -72,7 +75,7 @@ const Level = ({
       const xPair = [coords["x"], serverCoords["x"]];
       const yPair = [coords["y"], serverCoords["y"]];
 
-      console.log("clicked: ", coords, "target: ", serverCoords);
+      // console.log("clicked: ", coords, "target: ", serverCoords);
 
       // logic to search for coords nearby, since a character may occupy serveral coords
       if (
@@ -87,6 +90,11 @@ const Level = ({
           yPair[0] + 3 === yPair[1]
         ) {
           alert(`you've found ${chosenCharacter}`);
+
+          setFoundCharacters((foundCharacters) => [
+            ...foundCharacters,
+            chosenCharacter,
+          ]);
         }
       }
     };

@@ -20,7 +20,7 @@ const App = () => {
   const [lvl, setLvl] = useState(1);
   const [inHome, setInHome] = useState(false);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
-  const [chosenCharacter, setChosenCharacter] = useState();
+  const [chosenCharacter, setChosenCharacter] = useState("default");
   const [foundCharacters, setFoundCharacters] = useState([""]);
 
   const imgDatabase = [
