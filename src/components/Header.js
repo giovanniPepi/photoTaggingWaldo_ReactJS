@@ -8,11 +8,11 @@ const Header = ({
   imgDatabase,
   avatarDatabase,
   inHome,
-  chosenCharacter,
+  foundCharacters,
 }) => {
   return (
     <section className="header">
-      {chosenCharacter.length > 1 ? <div>{chosenCharacter}</div> : null}
+      {foundCharacters.length > 1 ? <div>{foundCharacters}</div> : null}
       {inHome ? (
         <>
           <Link to="/">

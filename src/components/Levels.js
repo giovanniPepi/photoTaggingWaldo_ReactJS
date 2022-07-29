@@ -11,6 +11,8 @@ const Level = ({
   setInHome,
   chosenCharacter,
   setChosenCharacter,
+  foundCharacters,
+  setFoundCharacters,
 }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
@@ -132,6 +134,9 @@ const Level = ({
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}
         setChosenCharacter={setChosenCharacter}
+        chosenCharacter={chosenCharacter}
+        foundCharacters={foundCharacters}
+        setFoundCharacters={setFoundCharacters}
       />
     </section>
   );

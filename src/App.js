@@ -20,7 +20,8 @@ const App = () => {
   const [lvl, setLvl] = useState(1);
   const [inHome, setInHome] = useState(false);
   const possibleLvls = [1, 2, 3, 4, 5, 6];
-  const [chosenCharacter, setChosenCharacter] = useState([" "]);
+  const [chosenCharacter, setChosenCharacter] = useState();
+  const [foundCharacters, setFoundCharacters] = useState([""]);
 
   const imgDatabase = [
     { photo: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
@@ -46,7 +47,7 @@ const App = () => {
         imgDatabase={imgDatabase[lvl - 1]}
         avatarDatabase={avatarDatabase}
         inHome={inHome}
-        chosenCharacter={chosenCharacter}
+        foundCharacters={foundCharacters}
       />
       <Routes>
         <Route
@@ -78,6 +79,8 @@ const App = () => {
                   setInHome={setInHome}
                   chosenCharacter={chosenCharacter}
                   setChosenCharacter={setChosenCharacter}
+                  foundCharacters={foundCharacters}
+                  setFoundCharacters={setFoundCharacters}
                 />
               }
             />
