@@ -83,13 +83,18 @@ const Level = ({
       const winConditionX =
         xPair[0] === xPair[1] ||
         xPair[0] + 1 === xPair[1] ||
-        xPair[0] + 2 === xPair[1];
+        xPair[0] + 2 === xPair[1] ||
+        xPair[0] - 1 === xPair[1] ||
+        xPair[0] - 2 === xPair[1];
 
       const winConditionY =
         yPair[0] === yPair[1] ||
         yPair[0] + 1 === yPair[1] ||
         yPair[0] + 2 === yPair[1] ||
-        yPair[0] + 3 === yPair[1];
+        yPair[0] + 3 === yPair[1] ||
+        yPair[0] - 1 === yPair[1] ||
+        yPair[0] - 2 === yPair[1] ||
+        yPair[0] - 3 === yPair[1];
 
       console.log(
         "clicked: ",
@@ -97,15 +102,6 @@ const Level = ({
         "target: ",
         serverCoords,
         "conditions summary: ",
-        "x ",
-        xPair[0] === xPair[1],
-        xPair[0] + 1 === xPair[1],
-        xPair[0] + 2 === xPair[1],
-        "y :",
-        xPair[0] === xPair[1],
-        xPair[0] + 1 === xPair[1],
-        xPair[0] + 2 === xPair[1],
-        xPair[0] + 3 === xPair[1],
         "winconditionx: ",
         winConditionX,
         "winconditionY",
