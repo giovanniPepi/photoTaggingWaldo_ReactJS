@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
 
-const Header = ({ lvl, setLvl, imgDatabase, avatarDatabase, inHome }) => {
+const Header = ({
+  lvl,
+  setLvl,
+  imgDatabase,
+  avatarDatabase,
+  inHome,
+  chosenCharacter,
+}) => {
   return (
     <section className="header">
+      {chosenCharacter.length > 1 ? <div>{chosenCharacter}</div> : null}
       {inHome ? (
         <>
           <Link to="/">

@@ -3,11 +3,18 @@ import { collection, getDocs } from "firebase/firestore";
 import DropdownMenu from "./DropdownMenu";
 import { db } from "../firebase";
 
-const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
+const Level = ({
+  lvl,
+  imgDatabase,
+  avatarDatabase,
+  inHome,
+  setInHome,
+  chosenCharacter,
+  setChosenCharacter,
+}) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
   const [clickLocation, setClickLocation] = useState({ left: "0%", top: "0%" });
-  const [chosenCharacter, setChosenCharacter] = useState("default");
 
   useEffect(() => {
     console.log("triggered");
