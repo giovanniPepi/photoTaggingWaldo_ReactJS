@@ -7,7 +7,7 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
   const [clickLocation, setClickLocation] = useState({ left: "0%", top: "0%" });
-  const [chosenCharacter, setChosenCharacter] = useState("");
+  const [chosenCharacter, setChosenCharacter] = useState("default");
 
   useEffect(() => {
     console.log("triggered");
@@ -51,7 +51,7 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
           };
           return odlawPosition;
         default:
-          console.log("error, no character position found");
+          console.log("echar not found");
       }
     };
 
@@ -61,9 +61,7 @@ const Level = ({ lvl, imgDatabase, avatarDatabase, inHome, setInHome }) => {
         lvl - 1
       );
       const xPair = [coords["x"], serverCoords["x"]];
-      // console.log(xPair);
       const yPair = [coords["y"], serverCoords["y"]];
-      // console.log(yPair);
 
       console.log("clicked: ", coords, "target: ", serverCoords);
 
