@@ -12,7 +12,10 @@ const Header = ({
 }) => {
   return (
     <section className="header">
-      {foundCharacters.length > 1 ? <div>{foundCharacters}</div> : null}
+      {foundCharacters.length > 1 &&
+        foundCharacters.map((char) => {
+          return <div key={char}>{char}</div>;
+        })}
       {inHome ? (
         <>
           <Link to="/">

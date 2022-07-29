@@ -59,8 +59,8 @@ const Level = ({
           return odlawPosition;
         default:
           const defaultPosition = {
-            x: coordList[0]["odlaw"][lvl]["x"],
-            y: coordList[0]["odlaw"][lvl]["y"],
+            x: coordList[0]["default"][lvl]["x"],
+            y: coordList[0]["default"][lvl]["y"],
           };
           console.log("default or char not found");
           return defaultPosition;
@@ -68,38 +68,71 @@ const Level = ({
     };
 
     const validateChosenCoords = async (chosenCharacter, lvl) => {
+      // avoid unecessary processing in the first load
+      if (chosenCharacter === "default") return;
+
       const serverCoords = await getCoordsFromFirestore(
         chosenCharacter,
         lvl - 1
       );
+
       const xPair = [coords["x"], serverCoords["x"]];
       const yPair = [coords["y"], serverCoords["y"]];
 
-      // console.log("clicked: ", coords, "target: ", serverCoords);
-
       // logic to search for coords nearby, since a character may occupy serveral coords
-      if (
+      const winConditionX =
         xPair[0] === xPair[1] ||
         xPair[0] + 1 === xPair[1] ||
-        xPair[0] + 2 === xPair[1]
-      ) {
-        if (
-          yPair[0] === yPair[1] ||
-          yPair[0] + 1 === yPair[1] ||
-          yPair[0] + 2 === yPair[1] ||
-          yPair[0] + 3 === yPair[1]
-        ) {
-          alert(`you've found ${chosenCharacter}`);
+        xPair[0] + 2 === xPair[1];
 
-          setFoundCharacters((foundCharacters) => [
-            ...foundCharacters,
-            chosenCharacter,
-          ]);
-        }
-      }
+      const winConditionY =
+        yPair[0] === yPair[1] ||
+        yPair[0] + 1 === yPair[1] ||
+        yPair[0] + 2 === yPair[1] ||
+        yPair[0] + 3 === yPair[1];
+
+      console.log(
+        "clicked: ",
+        coords,
+        "target: ",
+        serverCoords,
+        "conditions summary: ",
+        "x ",
+        xPair[0] === xPair[1],
+        xPair[0] + 1 === xPair[1],
+        xPair[0] + 2 === xPair[1],
+        "y :",
+        xPair[0] === xPair[1],
+        xPair[0] + 1 === xPair[1],
+        xPair[0] + 2 === xPair[1],
+        xPair[0] + 3 === xPair[1],
+        "winconditionx: ",
+        winConditionX,
+        "winconditionY",
+        winConditionY
+      );
+
+      if (winConditionX && winConditionY) {
+        alert(`you've found ${chosenCharacter}`);
+
+        setFoundCharacters((foundCharacters) => [
+          ...foundCharacters,
+          chosenCharacter,
+        ]);
+      } else console.log("wincondition not met!");
     };
+    // will run each time the useEffect runs
     validateChosenCoords(chosenCharacter, lvl);
-  }, [chosenCharacter, coords, lvl, setInHome]);
+    // resets chosen char
+    setChosenCharacter("default");
+  }, [
+    chosenCharacter,
+    coords,
+    lvl,
+    setInHome,
+    setChosenCharacter,
+    setFoundCharacters,
+  ]);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
