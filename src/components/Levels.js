@@ -109,12 +109,16 @@ const Level = ({
       );
 
       if (winConditionX && winConditionY) {
-        alert(`you've found ${chosenCharacter}`);
-
+        if (foundCharacters.includes(chosenCharacter)) {
+          console.log("alreayd found ", chosenCharacter);
+          return;
+        }
         setFoundCharacters((foundCharacters) => [
           ...foundCharacters,
           chosenCharacter,
         ]);
+
+        alert(`you've found ${chosenCharacter}`);
       } else console.log("wincondition not met!");
     };
     // will run each time the useEffect runs
