@@ -48,6 +48,7 @@ const App = () => {
         avatarDatabase={avatarDatabase}
         inHome={inHome}
         foundCharacters={foundCharacters}
+        setFoundCharacters={setFoundCharacters}
       />
       <Routes>
         <Route

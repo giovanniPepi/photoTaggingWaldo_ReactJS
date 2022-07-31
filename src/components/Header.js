@@ -4,11 +4,11 @@ import waldoHeader from "../img/waldoHeader.jpg";
 
 const Header = ({
   lvl,
-  setLvl,
   imgDatabase,
   avatarDatabase,
   inHome,
   foundCharacters,
+  setFoundCharacters,
 }) => {
   return (
     <section className="header">
@@ -35,36 +35,35 @@ const Header = ({
                 src={avatarDatabase["waldo"]}
                 alt="waldo"
                 className="avatar"
-                id="waldoHeader"
               />
             ) : null}
-            {imgDatabase["odlaw"] === true ? (
+            {imgDatabase["odlaw"] === true &&
+            !foundCharacters.includes("odlaw") ? (
               <img
                 src={avatarDatabase["odlaw"]}
                 alt="odlaw"
                 className="avatar"
-                id="odlawHeader"
               />
             ) : null}
-            {imgDatabase["wenda"] === true ? (
+            {imgDatabase["wenda"] === true &&
+            !foundCharacters.includes("wenda") ? (
               <img
                 src={avatarDatabase["wenda"]}
                 alt="waldo"
                 className="avatar"
-                id="wendaHeader"
               />
             ) : null}
-            {imgDatabase["wizard"] === true ? (
+            {imgDatabase["wizard"] === true &&
+            !foundCharacters.includes("wizard") ? (
               <img
                 src={avatarDatabase["wizard"]}
                 alt="wizard"
                 className="avatar"
-                id="wizardHeader"
               />
             ) : null}
           </div>
           <p className="headerLevel">Level {lvl}</p>
-          <Link to="/">
+          <Link to="/" onClick={() => setFoundCharacters("default")}>
             <button className="gobackBtn">Go back</button>
           </Link>
         </>
