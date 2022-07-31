@@ -125,14 +125,7 @@ const Level = ({
     validateChosenCoords(chosenCharacter, lvl);
     // resets chosen char
     setChosenCharacter("default");
-  }, [
-    chosenCharacter,
-    coords,
-    lvl,
-    setInHome,
-    setChosenCharacter,
-    setFoundCharacters,
-  ]);
+  });
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper

@@ -12,10 +12,6 @@ const Header = ({
 }) => {
   return (
     <section className="header">
-      {foundCharacters.length > 1 &&
-        foundCharacters.map((char) => {
-          return <div key={char}>{char}</div>;
-        })}
       {inHome ? (
         <>
           <Link to="/">
@@ -33,11 +29,13 @@ const Header = ({
       {inHome === false ? (
         <>
           <div className="charactersPresent">
-            {imgDatabase["waldo"] === true ? (
+            {imgDatabase["waldo"] === true &&
+            !foundCharacters.includes("waldo") ? (
               <img
                 src={avatarDatabase["waldo"]}
                 alt="waldo"
                 className="avatar"
+                id="waldoHeader"
               />
             ) : null}
             {imgDatabase["odlaw"] === true ? (
@@ -45,6 +43,7 @@ const Header = ({
                 src={avatarDatabase["odlaw"]}
                 alt="odlaw"
                 className="avatar"
+                id="odlawHeader"
               />
             ) : null}
             {imgDatabase["wenda"] === true ? (
@@ -52,6 +51,7 @@ const Header = ({
                 src={avatarDatabase["wenda"]}
                 alt="waldo"
                 className="avatar"
+                id="wendaHeader"
               />
             ) : null}
             {imgDatabase["wizard"] === true ? (
@@ -59,6 +59,7 @@ const Header = ({
                 src={avatarDatabase["wizard"]}
                 alt="wizard"
                 className="avatar"
+                id="wizardHeader"
               />
             ) : null}
           </div>
