@@ -22,6 +22,7 @@ const App = () => {
   const possibleLvls = [1, 2, 3, 4, 5, 6];
   const [chosenCharacter, setChosenCharacter] = useState("default");
   const [foundCharacters, setFoundCharacters] = useState([""]);
+  const [time, setTime] = useState(0);
 
   const imgDatabase = [
     { photo: bg1, waldo: true, odlaw: true, wenda: false, wizard: true },
@@ -49,6 +50,8 @@ const App = () => {
         inHome={inHome}
         foundCharacters={foundCharacters}
         setFoundCharacters={setFoundCharacters}
+        time={time}
+        setTime={setTime}
       />
       <Routes>
         <Route

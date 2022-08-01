@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
+import Timer from "./Timer";
 
 const Header = ({
   lvl,
@@ -9,6 +10,8 @@ const Header = ({
   inHome,
   foundCharacters,
   setFoundCharacters,
+  time,
+  setTime,
 }) => {
   return (
     <section className="header">
@@ -29,6 +32,7 @@ const Header = ({
       {inHome === false ? (
         <>
           <div className="charactersPresent">
+            <Timer time={time} setTime={setTime} inHome={inHome} />
             {imgDatabase["waldo"] === true &&
             !foundCharacters.includes("waldo") ? (
               <img
