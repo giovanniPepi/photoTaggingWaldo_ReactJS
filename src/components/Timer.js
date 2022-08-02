@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import formatTime from "../utils/formatTime";
 
 const Timer = ({ inHome, time, setTime }) => {
   useEffect(() => {
@@ -9,11 +10,15 @@ const Timer = ({ inHome, time, setTime }) => {
       }, 1000);
     } else {
       clearInterval(interval);
+      setTime(0);
     }
+
+    // avoids absurd times
+    if (time > 86400) setTime(0);
 
     return () => clearInterval(interval);
   });
-  console.log(time);
-  return <>{time}</>;
+
+  return <>{formatTime(time, setTime)}</>;
 };
 export default Timer;
