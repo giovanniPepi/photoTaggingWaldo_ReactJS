@@ -7,16 +7,13 @@ const Level = ({
   imgDatabase,
   avatarDatabase,
   setInHome,
-  chosenCharacter,
   setChosenCharacter,
-  foundCharacters,
   setFoundCharacters,
-  isGameOver,
-  setIsGameOver,
   show,
   setShow,
   clickLocation,
   imageClick,
+  isGameOver,
 }) => {
   useEffect(() => {
     // handles show home
@@ -39,9 +36,8 @@ const Level = ({
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}
         setChosenCharacter={setChosenCharacter}
-        chosenCharacter={chosenCharacter}
-        foundCharacters={foundCharacters}
         setFoundCharacters={setFoundCharacters}
+        isGameOver={isGameOver}
       />
     </section>
   );

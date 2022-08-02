@@ -5,10 +5,9 @@ const DropdownMenu = ({
   setShow,
   imgDatabase,
   avatarDatabase,
-  lvl,
   clickLocation,
   setChosenCharacter,
-  chosenCharacter,
+  isGameOver,
 }) => {
   const handleCharacterChoice = async (character) => {
     setShow(false);
@@ -17,7 +16,7 @@ const DropdownMenu = ({
 
   return (
     <>
-      {show ? (
+      {show && !isGameOver ? (
         <div className="dropdownMenu visible" style={clickLocation}>
           {imgDatabase.waldo && (
             <div

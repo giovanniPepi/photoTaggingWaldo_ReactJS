@@ -115,122 +115,124 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Firebase
-    const colRef = collection(db, "coords");
+    if (!isGameOver) {
+      // Firebase
+      const colRef = collection(db, "coords");
 
-    const coordList = [];
+      const coordList = [];
 
-    const getCoordsFromFirestore = async (character, lvl) => {
-      const docs = await getDocs(colRef);
-      docs.forEach((doc) => {
-        coordList.push({ ...doc.data() });
-      });
-      switch (character) {
-        case "waldo":
-          const waldoPosition = {
-            x: coordList[0]["waldo"][lvl]["x"],
-            y: coordList[0]["waldo"][lvl]["y"],
-          };
-          return waldoPosition;
-        case "wenda":
-          const wendaPosition = {
-            x: coordList[0]["wenda"][lvl]["x"],
-            y: coordList[0]["wenda"][lvl]["y"],
-          };
-          return wendaPosition;
-        case "wizard":
-          const wizardPosition = {
-            x: coordList[0]["wizard"][lvl]["x"],
-            y: coordList[0]["wizard"][lvl]["y"],
-          };
-          return wizardPosition;
-        case "odlaw":
-          const odlawPosition = {
-            x: coordList[0]["odlaw"][lvl]["x"],
-            y: coordList[0]["odlaw"][lvl]["y"],
-          };
-          return odlawPosition;
-        default:
-          const defaultPosition = {
-            x: coordList[0]["default"][lvl]["x"],
-            y: coordList[0]["default"][lvl]["y"],
-          };
-          console.log("default or char not found");
-          return defaultPosition;
-      }
-    };
-
-    const validateChosenCoords = async (chosenCharacter, lvl) => {
-      // avoid unecessary processing in the first load
-      if (chosenCharacter === "default") return;
-
-      const serverCoords = await getCoordsFromFirestore(
-        chosenCharacter,
-        lvl - 1
-      );
-
-      const xPair = [coords["x"], serverCoords["x"]];
-      const yPair = [coords["y"], serverCoords["y"]];
-
-      // logic to search for coords nearby, since a character may occupy serveral coords
-      const winConditionX =
-        xPair[0] === xPair[1] ||
-        xPair[0] + 1 === xPair[1] ||
-        xPair[0] + 2 === xPair[1] ||
-        xPair[0] - 1 === xPair[1] ||
-        xPair[0] - 2 === xPair[1];
-
-      const winConditionY =
-        yPair[0] === yPair[1] ||
-        yPair[0] + 1 === yPair[1] ||
-        yPair[0] + 2 === yPair[1] ||
-        yPair[0] + 3 === yPair[1] ||
-        yPair[0] - 1 === yPair[1] ||
-        yPair[0] - 2 === yPair[1] ||
-        yPair[0] - 3 === yPair[1];
-
-      console.log(
-        "clicked: ",
-        coords,
-        "target: ",
-        serverCoords,
-        "conditions summary: ",
-        "winconditionx: ",
-        winConditionX,
-        "winconditionY",
-        winConditionY
-      );
-
-      if (winConditionX && winConditionY) {
-        // avoids finding the same character
-        if (foundCharacters.includes(chosenCharacter)) {
-          console.log("alreayd found ", chosenCharacter);
-          return;
+      const getCoordsFromFirestore = async (character, lvl) => {
+        const docs = await getDocs(colRef);
+        docs.forEach((doc) => {
+          coordList.push({ ...doc.data() });
+        });
+        switch (character) {
+          case "waldo":
+            const waldoPosition = {
+              x: coordList[0]["waldo"][lvl]["x"],
+              y: coordList[0]["waldo"][lvl]["y"],
+            };
+            return waldoPosition;
+          case "wenda":
+            const wendaPosition = {
+              x: coordList[0]["wenda"][lvl]["x"],
+              y: coordList[0]["wenda"][lvl]["y"],
+            };
+            return wendaPosition;
+          case "wizard":
+            const wizardPosition = {
+              x: coordList[0]["wizard"][lvl]["x"],
+              y: coordList[0]["wizard"][lvl]["y"],
+            };
+            return wizardPosition;
+          case "odlaw":
+            const odlawPosition = {
+              x: coordList[0]["odlaw"][lvl]["x"],
+              y: coordList[0]["odlaw"][lvl]["y"],
+            };
+            return odlawPosition;
+          default:
+            const defaultPosition = {
+              x: coordList[0]["default"][lvl]["x"],
+              y: coordList[0]["default"][lvl]["y"],
+            };
+            console.log("default or char not found");
+            return defaultPosition;
         }
+      };
 
-        alert(`you've found ${chosenCharacter}`);
+      const validateChosenCoords = async (chosenCharacter, lvl) => {
+        // avoid unecessary processing in the first load
+        if (chosenCharacter === "default") return;
 
-        setFoundCharacters((foundCharacters) => [
-          ...foundCharacters,
+        const serverCoords = await getCoordsFromFirestore(
           chosenCharacter,
-        ]);
-      } else console.log("wincondition not met!");
-    };
+          lvl - 1
+        );
 
-    // will run each time the useEffect runs
-    validateChosenCoords(chosenCharacter, lvl);
+        const xPair = [coords["x"], serverCoords["x"]];
+        const yPair = [coords["y"], serverCoords["y"]];
 
-    const checkGameOver = () => {
-      if (foundCharacters.length === imgDatabase[lvl - 1]["quantity"]) {
-        console.log("game over");
-      }
-    };
+        // logic to search for coords nearby, since a character may occupy serveral coords
+        const winConditionX =
+          xPair[0] === xPair[1] ||
+          xPair[0] + 1 === xPair[1] ||
+          xPair[0] + 2 === xPair[1] ||
+          xPair[0] - 1 === xPair[1] ||
+          xPair[0] - 2 === xPair[1];
 
-    checkGameOver();
+        const winConditionY =
+          yPair[0] === yPair[1] ||
+          yPair[0] + 1 === yPair[1] ||
+          yPair[0] + 2 === yPair[1] ||
+          yPair[0] + 3 === yPair[1] ||
+          yPair[0] - 1 === yPair[1] ||
+          yPair[0] - 2 === yPair[1] ||
+          yPair[0] - 3 === yPair[1];
+
+        console.log(
+          "clicked: ",
+          coords,
+          "target: ",
+          serverCoords,
+          "conditions summary: ",
+          "winconditionx: ",
+          winConditionX,
+          "winconditionY",
+          winConditionY
+        );
+
+        if (winConditionX && winConditionY) {
+          // avoids finding the same character
+          if (foundCharacters.includes(chosenCharacter)) {
+            console.log("alreayd found ", chosenCharacter);
+            return;
+          }
+
+          alert(`you've found ${chosenCharacter}`);
+
+          setFoundCharacters((foundCharacters) => [
+            ...foundCharacters,
+            chosenCharacter,
+          ]);
+        } else console.log("wincondition not met!");
+      };
+
+      // will run each time the useEffect runs
+      validateChosenCoords(chosenCharacter, lvl);
+
+      const checkGameOver = () => {
+        if (foundCharacters.length === imgDatabase[lvl - 1]["quantity"]) {
+          setIsGameOver(true);
+        }
+      };
+
+      checkGameOver();
+    }
 
     // resets chosen char
     setChosenCharacter("default");
-  }, [chosenCharacter, lvl, coords, foundCharacters, imgDatabase]);
+  }, [chosenCharacter, lvl, coords, foundCharacters, imgDatabase, isGameOver]);
 
   return (
     <HashRouter basename="/">
