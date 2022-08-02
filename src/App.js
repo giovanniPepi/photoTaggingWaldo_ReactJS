@@ -224,6 +224,9 @@ const App = () => {
       const checkGameOver = () => {
         if (foundCharacters.length === imgDatabase[lvl - 1]["quantity"]) {
           setIsGameOver(true);
+
+          // sets final time
+          const finalTime = time;
         }
       };
 
@@ -232,7 +235,15 @@ const App = () => {
 
     // resets chosen char
     setChosenCharacter("default");
-  }, [chosenCharacter, lvl, coords, foundCharacters, imgDatabase, isGameOver]);
+  }, [
+    chosenCharacter,
+    lvl,
+    coords,
+    foundCharacters,
+    imgDatabase,
+    isGameOver,
+    time,
+  ]);
 
   return (
     <HashRouter basename="/">
@@ -246,6 +257,7 @@ const App = () => {
         setFoundCharacters={setFoundCharacters}
         time={time}
         setTime={setTime}
+        isGameOver={isGameOver}
       />
       <Routes>
         <Route

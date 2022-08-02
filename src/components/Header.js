@@ -12,6 +12,7 @@ const Header = ({
   setFoundCharacters,
   time,
   setTime,
+  isGameOver,
 }) => {
   return (
     <section className="header">
@@ -32,7 +33,12 @@ const Header = ({
       {inHome === false ? (
         <>
           <div className="charactersPresent">
-            <Timer time={time} setTime={setTime} inHome={inHome} />
+            <Timer
+              time={time}
+              setTime={setTime}
+              inHome={inHome}
+              isGameOver={isGameOver}
+            />
             {imgDatabase["waldo"] === true &&
             !foundCharacters.includes("waldo") ? (
               <img
