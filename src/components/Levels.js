@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import DropdownMenu from "./DropdownMenu";
+import Final from "./Final";
 
 const Level = ({
   lvl,
@@ -14,6 +15,10 @@ const Level = ({
   clickLocation,
   imageClick,
   isGameOver,
+  showFinal,
+  userName,
+  setUserName,
+  finalTime,
 }) => {
   useEffect(() => {
     // handles show home
@@ -39,6 +44,14 @@ const Level = ({
         setFoundCharacters={setFoundCharacters}
         isGameOver={isGameOver}
       />
+      {showFinal ? (
+        <Final
+          showFinal={showFinal}
+          userName={userName}
+          setUserName={setUserName}
+          finalTime={finalTime}
+        />
+      ) : null}
     </section>
   );
 };

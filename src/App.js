@@ -28,6 +28,9 @@ const App = () => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
+  const [showFinal, setShowFinal] = useState(false);
+  const [finalTime, setFinalTime] = useState(0);
+  const [userName, setUserName] = useState("");
   const [clickLocation, setClickLocation] = useState({
     left: "0%",
     top: "0%",
@@ -116,6 +119,7 @@ const App = () => {
 
   useEffect(() => {
     if (!isGameOver) {
+      setShowFinal(false);
       // Firebase
       const colRef = collection(db, "coords");
 
@@ -221,14 +225,12 @@ const App = () => {
       // will run each time the useEffect runs
       validateChosenCoords(chosenCharacter, lvl);
 
+      // endgame
       const checkGameOver = () => {
         if (foundCharacters.length === imgDatabase[lvl - 1]["quantity"]) {
           setIsGameOver(true);
-
-          // sets final time
-          const finalTime = time;
-          const user = prompt("whats your name");
-          console.log(user, finalTime, "seconds");
+          setShowFinal(true);
+          setFinalTime(time);
         }
       };
 
@@ -297,6 +299,10 @@ const App = () => {
                   setShow={setShow}
                   clickLocation={clickLocation}
                   imageClick={imageClick}
+                  showFinal={showFinal}
+                  userName={userName}
+                  setUserName={setUserName}
+                  finalTime={finalTime}
                 />
               }
             />
