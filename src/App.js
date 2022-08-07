@@ -227,6 +227,8 @@ const App = () => {
 
           // sets final time
           const finalTime = time;
+          const user = prompt("whats your name");
+          console.log(user, finalTime, "seconds");
         }
       };
 
