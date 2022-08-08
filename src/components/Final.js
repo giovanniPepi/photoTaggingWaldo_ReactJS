@@ -1,14 +1,19 @@
 const Final = ({ showFinal, userName, setUserName, finalTime }) => {
   return (
     <>
-      {showFinal
-        ? console.log("show final modal activated", finalTime, "seconds")
-        : null}
-      <div className="endgameModal">
-        <label htmlFor="userName">Enter your name: </label>
-        <input name="userName"></input>
-        <button>Ok</button>
-      </div>
+      {showFinal ? (
+        <div className="endgameModal visible">
+          <label htmlFor="userName" className="userName visible">
+            Name:
+          </label>
+          <input
+            name="userName"
+            id="userName"
+            className="userName visible"
+          ></input>
+          <button className="endgameBtn">Register score</button>
+        </div>
+      ) : null}
     </>
   );
 };

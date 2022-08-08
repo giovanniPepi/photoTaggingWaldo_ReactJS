@@ -170,6 +170,24 @@ button {
     max-width: 100%;
     display: block;
   }
+  .endgameModal,
+  .userName {
+    display: none;
+  }
+  .endgameModal.visible {
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    background-color: var(--blueWaldo);
+  }
+  .endgameModal.visible,
+  .userName.visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .endgameBtn {
+  }
 }
 
 @media screen and (min-width: 501px) and (max-width: 899px) {
