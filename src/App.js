@@ -117,6 +117,14 @@ const App = () => {
     setClickLocation(updatedCoords);
   };
 
+  const handleInput = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const showFinalMessage = () => {
+    console.log("You have entered the final info thx", userName);
+  };
+
   useEffect(() => {
     if (!isGameOver) {
       setShowFinal(false);
@@ -233,7 +241,6 @@ const App = () => {
           setFinalTime(time);
         }
       };
-
       checkGameOver();
     }
 
@@ -303,6 +310,8 @@ const App = () => {
                   userName={userName}
                   setUserName={setUserName}
                   finalTime={finalTime}
+                  handleInput={handleInput}
+                  showFinalMessage={showFinalMessage}
                 />
               }
             />

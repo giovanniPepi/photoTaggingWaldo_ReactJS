@@ -1,4 +1,11 @@
-const Final = ({ showFinal, userName, setUserName, finalTime }) => {
+const Final = ({
+  showFinal,
+  userName,
+  setUserName,
+  finalTime,
+  showFinalMessage,
+  handleInput,
+}) => {
   return (
     <>
       {showFinal ? (
@@ -7,11 +14,14 @@ const Final = ({ showFinal, userName, setUserName, finalTime }) => {
             Name:
           </label>
           <input
+            onChange={handleInput}
             name="userName"
             id="userName"
             className="userName visible"
           ></input>
-          <button className="endgameBtn">Register score</button>
+          <button className="endgameBtn" onClick={showFinalMessage}>
+            Register score
+          </button>
         </div>
       ) : null}
     </>

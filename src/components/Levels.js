@@ -19,6 +19,8 @@ const Level = ({
   userName,
   setUserName,
   finalTime,
+  handleInput,
+  showFinalMessage,
 }) => {
   useEffect(() => {
     // handles show home
@@ -50,6 +52,8 @@ const Level = ({
           userName={userName}
           setUserName={setUserName}
           finalTime={finalTime}
+          handleInput={handleInput}
+          showFinalMessage={showFinalMessage}
         />
       ) : null}
     </section>
