@@ -124,6 +124,7 @@ const App = () => {
   const handleFinalSubmit = () => {
     const userRef = doc(db, `${lvl}`, userName);
     setDoc(userRef, { time: time }, { merge: true });
+    setShowFinal(false);
     console.log("added to firestore");
   };
 
