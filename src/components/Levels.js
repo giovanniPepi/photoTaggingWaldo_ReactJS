@@ -21,6 +21,7 @@ const Level = ({
   finalTime,
   handleInput,
   showFinalMessage,
+  handleFinalSubmit,
 }) => {
   useEffect(() => {
     // handles show home
@@ -54,6 +55,7 @@ const Level = ({
           finalTime={finalTime}
           handleInput={handleInput}
           showFinalMessage={showFinalMessage}
+          handleFinalSubmit={handleFinalSubmit}
         />
       ) : null}
     </section>

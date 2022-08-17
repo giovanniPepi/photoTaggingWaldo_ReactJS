@@ -5,6 +5,7 @@ const Final = ({
   finalTime,
   showFinalMessage,
   handleInput,
+  handleFinalSubmit,
 }) => {
   return (
     <>
@@ -19,7 +20,7 @@ const Final = ({
             id="userName"
             className="userName visible"
           ></input>
-          <button className="endgameBtn" onClick={showFinalMessage}>
+          <button className="endgameBtn" onClick={handleFinalSubmit}>
             Register score
           </button>
         </div>

@@ -16,7 +16,7 @@ import odlawMini from "../src/img/OdlawAvatar.jpg";
 import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
 import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 
 const App = () => {
   const [lvl, setLvl] = useState(1);
@@ -119,6 +119,12 @@ const App = () => {
 
   const handleInput = (event) => {
     setUserName(event.target.value);
+  };
+
+  const handleFinalSubmit = () => {
+    const userRef = doc(db, `${lvl}`, userName);
+    setDoc(userRef, { time: time }, { merge: true });
+    console.log("added to firestore");
   };
 
   const showFinalMessage = () => {
@@ -312,6 +318,7 @@ const App = () => {
                   finalTime={finalTime}
                   handleInput={handleInput}
                   showFinalMessage={showFinalMessage}
+                  handleFinalSubmit={handleFinalSubmit}
                 />
               }
             />
