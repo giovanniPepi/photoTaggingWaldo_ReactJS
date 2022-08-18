@@ -9,6 +9,7 @@ const Level = ({
   avatarDatabase,
   setInHome,
   setChosenCharacter,
+  foundCharacters,
   setFoundCharacters,
   show,
   setShow,
@@ -56,6 +57,7 @@ const Level = ({
           handleInput={handleInput}
           showFinalMessage={showFinalMessage}
           handleFinalSubmit={handleFinalSubmit}
+          found
         />
       ) : null}
     </section>

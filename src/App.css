@@ -175,6 +175,9 @@ button {
     display: none;
   }
   .endgameModal.visible {
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 1rem;
     position: absolute;
     top: 30%;
     left: 45%;
@@ -185,8 +188,11 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
   }
   .endgameBtn {
+    background-color: var(--redWaldo);
   }
 }
 

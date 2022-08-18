@@ -126,6 +126,7 @@ const App = () => {
     setDoc(userRef, { time: time }, { merge: true });
     setShowFinal(false);
     console.log("added to firestore");
+    showFinalMessage();
   };
 
   const showFinalMessage = () => {
@@ -133,6 +134,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log("isGameOver:", isGameOver);
     if (!isGameOver) {
       setShowFinal(false);
       // Firebase

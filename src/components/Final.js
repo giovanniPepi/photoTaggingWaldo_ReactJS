@@ -6,11 +6,14 @@ const Final = ({
   showFinalMessage,
   handleInput,
   handleFinalSubmit,
+  foundCharacters,
 }) => {
   return (
     <>
       {showFinal ? (
         <div className="endgameModal visible">
+          <p>Congratulations!</p>
+          <p>It took you {finalTime} seconds to find all the characters</p>
           <label htmlFor="userName" className="userName visible">
             Name:
           </label>
