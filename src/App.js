@@ -126,9 +126,19 @@ const App = () => {
   };
 
   const resetGame = () => {
-    setFoundCharacters("default");
+    setLvl(1);
+    setChosenCharacter("default");
+    setFoundCharacters([]);
+    setTime(0);
+    setCoords({ x: 0, y: 0 });
     setShow(false);
-    setInHome(true);
+    setShowFinal(false);
+    setFinalTime(0);
+    setUserName("");
+    setClickLocation({
+      left: "0%",
+      top: "0%",
+    });
     setIsGameOver(false);
   };
 
