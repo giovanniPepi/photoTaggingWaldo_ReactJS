@@ -1,4 +1,7 @@
 import React from "react";
+import Check from "./Check";
+import Loading from "./Loading";
+import Wrong from "./Wrong";
 
 const DropdownMenu = ({
   show,
