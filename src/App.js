@@ -121,16 +121,24 @@ const App = () => {
     setUserName(event.target.value);
   };
 
+  const showFinalMessage = () => {
+    console.log("You have entered the final info thx", userName);
+  };
+
+  const resetGame = () => {
+    setFoundCharacters("default");
+    setShow(false);
+    setInHome(true);
+    setIsGameOver(false);
+  };
+
   const handleFinalSubmit = () => {
     const userRef = doc(db, `${lvl}`, userName);
     setDoc(userRef, { time: time }, { merge: true });
     setShowFinal(false);
     console.log("added to firestore");
     showFinalMessage();
-  };
-
-  const showFinalMessage = () => {
-    console.log("You have entered the final info thx", userName);
+    resetGame();
   };
 
   useEffect(() => {
@@ -278,6 +286,7 @@ const App = () => {
         time={time}
         setTime={setTime}
         isGameOver={isGameOver}
+        resetGame={resetGame}
       />
       <Routes>
         <Route

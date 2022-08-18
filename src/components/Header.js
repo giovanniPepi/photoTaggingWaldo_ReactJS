@@ -13,6 +13,7 @@ const Header = ({
   time,
   setTime,
   isGameOver,
+  resetGame,
 }) => {
   return (
     <section className="header">
@@ -75,7 +76,7 @@ const Header = ({
             ) : null}
           </div>
           <p className="headerLevel">Level {lvl}</p>
-          <Link to="/" onClick={() => setFoundCharacters("default")}>
+          <Link to="/" onClick={resetGame}>
             <button className="gobackBtn">Go back</button>
           </Link>
         </>

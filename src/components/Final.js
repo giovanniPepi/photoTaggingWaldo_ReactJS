@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Final = ({
   showFinal,
   userName,
@@ -23,9 +25,9 @@ const Final = ({
             id="userName"
             className="userName visible"
           ></input>
-          <button className="endgameBtn" onClick={handleFinalSubmit}>
-            Register score
-          </button>
+          <Link to="/" onClick={handleFinalSubmit}>
+            <button className="endgameBtn">Register score</button>
+          </Link>
         </div>
       ) : null}
     </>
