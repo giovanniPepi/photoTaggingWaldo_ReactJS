@@ -119,7 +119,8 @@ button {
     width: 5rem;
   }
   .avatar {
-    width: 3rem;
+    width: 2.2rem;
+    padding: 0.5rem;
   }
   .avatarMini {
     height: 1.5rem;
@@ -193,6 +194,11 @@ button {
   }
   .endgameBtn {
     background-color: var(--redWaldo);
+  }
+  .charactersPresent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 }
 

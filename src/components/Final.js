@@ -17,7 +17,7 @@ const Final = ({
           <p>Congratulations!</p>
           <p>It took you {finalTime} seconds to find all the characters</p>
           <label htmlFor="userName" className="userName visible">
-            Name:
+            Do you want to save your score?
           </label>
           <input
             onChange={handleInput}

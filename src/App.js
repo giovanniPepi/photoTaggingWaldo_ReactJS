@@ -142,7 +142,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log("isGameOver:", isGameOver);
+    console.log(
+      "isGameOver:",
+      isGameOver,
+      "found characters: ",
+      foundCharacters.toString()
+    );
     if (!isGameOver) {
       setShowFinal(false);
       // Firebase
