@@ -5,21 +5,22 @@ import Wrong from "./Wrong";
 
 const DropdownMenu = ({
   show,
-  setShow,
   imgDatabase,
   avatarDatabase,
   clickLocation,
   setChosenCharacter,
   isGameOver,
+  showLoading,
+  setShowLoading,
+  showCheck,
+  setShowCheck,
+  showWrong,
+  setShowWrong,
 }) => {
-  const [showLoading, setShowLoading] = useState(false);
-  const [showWrong, setShowWrong] = useState(false);
-  const [showCheck, setShowCheck] = useState(false);
   const handleCharacterChoice = async (character) => {
     // hides menu
     //  setShow(false);
     setChosenCharacter(character);
-    setShowLoading(false);
   };
 
   return (

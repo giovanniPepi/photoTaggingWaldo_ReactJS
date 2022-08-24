@@ -91,6 +91,10 @@ const App = () => {
     wenda: wendaMini,
     wizard: wizardMini,
   });
+  // menu icons
+  const [showLoading, setShowLoading] = useState(false);
+  const [showWrong, setShowWrong] = useState(false);
+  const [showCheck, setShowCheck] = useState(false);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
@@ -346,6 +350,12 @@ const App = () => {
                   handleInput={handleInput}
                   showFinalMessage={showFinalMessage}
                   handleFinalSubmit={handleFinalSubmit}
+                  showLoading={showLoading}
+                  setShowLoading={setShowLoading}
+                  showCheck={showCheck}
+                  setShowCheck={setShowCheck}
+                  showWrong={showWrong}
+                  setShowWrong={setShowWrong}
                 />
               }
             />

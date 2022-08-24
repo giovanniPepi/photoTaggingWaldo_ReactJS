@@ -9,7 +9,6 @@ const Level = ({
   avatarDatabase,
   setInHome,
   setChosenCharacter,
-  foundCharacters,
   setFoundCharacters,
   show,
   setShow,
@@ -23,6 +22,12 @@ const Level = ({
   handleInput,
   showFinalMessage,
   handleFinalSubmit,
+  showLoading,
+  setShowLoading,
+  showCheck,
+  setShowCheck,
+  showWrong,
+  setShowWrong,
 }) => {
   useEffect(() => {
     // handles show home
@@ -47,6 +52,12 @@ const Level = ({
         setChosenCharacter={setChosenCharacter}
         setFoundCharacters={setFoundCharacters}
         isGameOver={isGameOver}
+        showLoading={showLoading}
+        setShowLoading={setShowLoading}
+        showCheck={showCheck}
+        setShowCheck={setShowCheck}
+        showWrong={showWrong}
+        setShowWrong={setShowWrong}
       />
       {showFinal ? (
         <Final
