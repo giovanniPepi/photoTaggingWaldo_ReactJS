@@ -109,6 +109,9 @@ const App = () => {
   };
 
   const imageClick = (e) => {
+    // clears previous icons everytime the menu is called
+    setShowCheck(false);
+    setShowWrong(false);
     const newCoords = getImgLocation(e);
     setCoords(newCoords);
     handleClickLocation(newCoords);
@@ -159,10 +162,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // clears previous icons everytime the menu is called
-    setShowCheck(false);
-    setShowWrong(false);
-
     // info
     console.log(
       "isGameOver:",

@@ -6,7 +6,7 @@ const Wrong = () => {
   const [btnInfo, setBtnInfo] = useState({
     path: mdiClose,
     color: "red",
-    size: 0.8,
+    size: 1,
   });
 
   const { path, color, size } = btnInfo;

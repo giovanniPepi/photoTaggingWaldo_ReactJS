@@ -6,7 +6,8 @@ const Check = () => {
   const [btnInfo, setBtnInfo] = useState({
     path: mdiCheck,
     color: "#84CC16",
-    size: 0.8,
+    size: 1,
+    padding: "50rem",
   });
 
   const { path, color, size } = btnInfo;

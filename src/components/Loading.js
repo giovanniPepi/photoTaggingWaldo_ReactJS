@@ -6,8 +6,8 @@ const Loading = () => {
   const [btnInfo, setBtnInfo] = useState({
     path: mdiLoading,
     color: "#0EA5E9",
-    size: 0.8,
-    spin: 0.25,
+    size: 1,
+    spin: 0.2,
   });
 
   const { path, color, size, spin } = btnInfo;
