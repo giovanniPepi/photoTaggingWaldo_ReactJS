@@ -109,6 +109,11 @@ button {
 .hidden {
   display: none;
 }
+.communicationFeedback {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 
 @media screen and (min-width: 900px) {
   .headerAvatarCont {

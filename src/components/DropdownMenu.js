@@ -27,6 +27,11 @@ const DropdownMenu = ({
     <>
       {show && !isGameOver ? (
         <div className="dropdownMenu visible" style={clickLocation}>
+          <div className="communicationFeedback">
+            {showLoading ? <Loading /> : null}
+            {showWrong ? <Wrong /> : null}
+            {showCheck ? <Check /> : null}
+          </div>
           {imgDatabase.waldo && (
             <div
               className="option"
@@ -38,9 +43,6 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Waldo
-              {showLoading ? <Loading /> : null}
-              {showWrong ? <Wrong /> : null}
-              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.odlaw && (
@@ -54,9 +56,6 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Odlaw
-              {showLoading ? <Loading /> : null}
-              {showWrong ? <Wrong /> : null}
-              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.wenda && (
@@ -70,9 +69,6 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Wenda
-              {showLoading ? <Loading /> : null}
-              {showWrong ? <Wrong /> : null}
-              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.wizard && (
@@ -86,9 +82,6 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Wizard
-              {showLoading ? <Loading /> : null}
-              {showWrong ? <Wrong /> : null}
-              {showCheck ? <Check /> : null}
             </div>
           )}
         </div>

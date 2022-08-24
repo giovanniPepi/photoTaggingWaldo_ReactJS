@@ -144,6 +144,9 @@ const App = () => {
       top: "0%",
     });
     setIsGameOver(false);
+    setShowLoading(false);
+    setShowCheck(false);
+    setShowWrong(false);
   };
 
   const handleFinalSubmit = () => {
@@ -170,10 +173,12 @@ const App = () => {
       const coordList = [];
 
       const getCoordsFromFirestore = async (character, lvl) => {
+        setShowLoading(true);
         const docs = await getDocs(colRef);
         docs.forEach((doc) => {
           coordList.push({ ...doc.data() });
         });
+        setShowLoading(false);
         switch (character) {
           case "waldo":
             const waldoPosition = {
@@ -257,6 +262,7 @@ const App = () => {
             return;
           }
 
+          setShowCheck(true);
           alert(`you've found ${chosenCharacter}`);
 
           setFoundCharacters((foundCharacters) => [
