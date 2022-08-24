@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Check from "./Check";
 import Loading from "./Loading";
 import Wrong from "./Wrong";
@@ -12,9 +12,14 @@ const DropdownMenu = ({
   setChosenCharacter,
   isGameOver,
 }) => {
+  const [showLoading, setShowLoading] = useState(false);
+  const [showWrong, setShowWrong] = useState(false);
+  const [showCheck, setShowCheck] = useState(false);
   const handleCharacterChoice = async (character) => {
-    setShow(false);
+    // hides menu
+    //  setShow(false);
     setChosenCharacter(character);
+    setShowLoading(false);
   };
 
   return (
@@ -32,6 +37,9 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Waldo
+              {showLoading ? <Loading /> : null}
+              {showWrong ? <Wrong /> : null}
+              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.odlaw && (
@@ -45,6 +53,9 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Odlaw
+              {showLoading ? <Loading /> : null}
+              {showWrong ? <Wrong /> : null}
+              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.wenda && (
@@ -58,6 +69,9 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Wenda
+              {showLoading ? <Loading /> : null}
+              {showWrong ? <Wrong /> : null}
+              {showCheck ? <Check /> : null}
             </div>
           )}
           {imgDatabase.wizard && (
@@ -71,6 +85,9 @@ const DropdownMenu = ({
                 className="avatarMini"
               />
               Wizard
+              {showLoading ? <Loading /> : null}
+              {showWrong ? <Wrong /> : null}
+              {showCheck ? <Check /> : null}
             </div>
           )}
         </div>
