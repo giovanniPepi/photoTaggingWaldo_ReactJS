@@ -120,7 +120,7 @@ const App = () => {
 
   const handleClickLocation = (coords) => {
     const { x, y } = coords;
-    const updatedCoords = { left: x + "%", top: y + "%" };
+    const updatedCoords = { left: x - 10 + "%", top: y + "%" };
     setClickLocation(updatedCoords);
   };
 
