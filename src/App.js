@@ -159,6 +159,11 @@ const App = () => {
   };
 
   useEffect(() => {
+    // clears previous icons everytime the menu is called
+    setShowCheck(false);
+    setShowWrong(false);
+
+    // info
     console.log(
       "isGameOver:",
       isGameOver,
@@ -259,6 +264,7 @@ const App = () => {
           // avoids finding the same character
           if (foundCharacters.includes(chosenCharacter)) {
             console.log("alreayd found ", chosenCharacter);
+            setShowWrong(true);
             return;
           }
 
@@ -269,7 +275,10 @@ const App = () => {
             ...foundCharacters,
             chosenCharacter,
           ]);
-        } else console.log("wincondition not met!");
+        } else {
+          setShowWrong(true);
+          console.log("wincondition not met!");
+        }
       };
 
       // will run each time the useEffect runs
