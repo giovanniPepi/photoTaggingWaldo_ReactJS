@@ -268,7 +268,7 @@ const App = () => {
           }
 
           setShowCheck(true);
-          alert(`you've found ${chosenCharacter}`);
+          console.log(`you've found ${chosenCharacter}`);
 
           setFoundCharacters((foundCharacters) => [
             ...foundCharacters,
