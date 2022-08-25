@@ -17,6 +17,7 @@ import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
 import { db } from "./firebase";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import Highscores from "./components/Highscores";
 
 const App = () => {
   const [lvl, setLvl] = useState(1);
@@ -96,6 +97,19 @@ const App = () => {
   const [showWrong, setShowWrong] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
 
+  // highscores
+  const colRefHighscore = collection(db, "2");
+  const highscoreList = [];
+
+  const getHighscoresFromFirestore = async () => {
+    const docsHighscore = await getDocs(colRefHighscore);
+    docsHighscore.forEach((doc) => {
+      highscoreList.push({ ...doc.data() });
+    });
+    console.log(highscoreList);
+  };
+  getHighscoresFromFirestore();
+
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
     const x = Math.round(
@@ -154,7 +168,7 @@ const App = () => {
 
   const handleFinalSubmit = () => {
     const userRef = doc(db, `${lvl}`, userName);
-    setDoc(userRef, { time: time }, { merge: true });
+    setDoc(userRef, { name: userName, time: time }, { merge: true });
     setShowFinal(false);
     console.log("added to firestore");
     showFinalMessage();
@@ -375,6 +389,10 @@ const App = () => {
             />
           );
         })}
+        <Route
+          path="/highscores"
+          element={<Highscores highscoreList={highscoreList} />}
+        />
         <Route
           path="*"
           element={

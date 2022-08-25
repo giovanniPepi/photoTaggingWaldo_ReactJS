@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
+import Highscores from "./Highscores";
 import Timer from "./Timer";
 
 const Header = ({
@@ -28,6 +29,7 @@ const Header = ({
               </div>
             </div>
           </Link>
+          <Link to="/highscores">teste</Link>
         </>
       ) : null}
 
