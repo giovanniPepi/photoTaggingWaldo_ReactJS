@@ -16,7 +16,17 @@ import odlawMini from "../src/img/OdlawAvatar.jpg";
 import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
 import { db } from "./firebase";
-import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  where,
+  Timestamp,
+  serverTimestamp,
+} from "firebase/firestore";
 import Highscores from "./components/Highscores";
 
 const App = () => {
@@ -98,15 +108,18 @@ const App = () => {
   const [showCheck, setShowCheck] = useState(false);
 
   // highscores
-  const colRefHighscore = collection(db, "2");
+  const colRefHighscore = collection(db, "highscores");
   const highscoreList = [];
 
   const getHighscoresFromFirestore = async () => {
     const docsHighscore = await getDocs(colRefHighscore);
     docsHighscore.forEach((doc) => {
-      highscoreList.push({ ...doc.data() });
+      console.log(doc.id, " => ", doc.data());
     });
-    console.log(highscoreList);
+
+    /* docsHighscore.forEach((doc) => {
+      highscoreList.push({ ...doc.data() });
+    }); */
   };
   getHighscoresFromFirestore();
 
@@ -166,9 +179,16 @@ const App = () => {
     setShowWrong(false);
   };
 
-  const handleFinalSubmit = () => {
-    const userRef = doc(db, `${lvl}`, userName);
-    setDoc(userRef, { name: userName, time: time }, { merge: true });
+  const handleFinalSubmit = async () => {
+    // this creates a new doc, should only be run once to create each lvl as a doc
+
+    const docRef = collection(db, lvl.toString());
+    await addDoc(docRef, {
+      userName,
+      time,
+      timestamp: serverTimestamp(),
+    });
+
     setShowFinal(false);
     console.log("added to firestore");
     showFinalMessage();

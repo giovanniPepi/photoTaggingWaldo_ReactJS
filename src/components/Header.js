@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import waldoHeader from "../img/waldoHeader.jpg";
-import Highscores from "./Highscores";
 import Timer from "./Timer";
 
 const Header = ({
@@ -10,7 +9,6 @@ const Header = ({
   avatarDatabase,
   inHome,
   foundCharacters,
-  setFoundCharacters,
   time,
   setTime,
   isGameOver,
@@ -29,7 +27,9 @@ const Header = ({
               </div>
             </div>
           </Link>
-          <Link to="/highscores">teste</Link>
+          <Link to="/highscores">
+            <button>Highscores</button>
+          </Link>
         </>
       ) : null}
 
