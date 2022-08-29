@@ -178,7 +178,7 @@ const App = () => {
 
     // loops through each level
     const getHighscoresFromFirestore = async () => {
-      for (let i = 0; i < 6; i++) {
+      for (let i = 1; i < 7; i++) {
         const highscoreMock = [];
         const docsHighscore = await getDocs(collection(db, `${i}`));
         docsHighscore.forEach((doc) => {
