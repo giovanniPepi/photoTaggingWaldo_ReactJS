@@ -335,32 +335,33 @@ const App = () => {
 
   return (
     <HashRouter basename="/">
-      <Header
-        lvl={lvl}
-        setLvl={setLvl}
-        imgDatabase={imgDatabase[lvl - 1]}
-        avatarDatabase={avatarDatabase}
-        inHome={inHome}
-        foundCharacters={foundCharacters}
-        setFoundCharacters={setFoundCharacters}
-        time={time}
-        setTime={setTime}
-        isGameOver={isGameOver}
-        resetGame={resetGame}
-      />
       <Routes>
         <Route
           path="/"
           element={
-            <Home
-              lvl={lvl}
-              setLvl={setLvl}
-              possibleLvls={possibleLvls}
-              imgDatabase={imgDatabase}
-              avatarDatabase={avatarDatabase}
-              inHome={inHome}
-              setInHome={setInHome}
-            />
+            <>
+              <Header
+                lvl={lvl}
+                imgDatabase={imgDatabase[lvl - 1]}
+                avatarDatabase={avatarDatabase}
+                inHome={inHome}
+                foundCharacters={foundCharacters}
+                setFoundCharacters={setFoundCharacters}
+                time={time}
+                setTime={setTime}
+                isGameOver={isGameOver}
+                resetGame={resetGame}
+              />
+              <Home
+                lvl={lvl}
+                setLvl={setLvl}
+                possibleLvls={possibleLvls}
+                imgDatabase={imgDatabase}
+                avatarDatabase={avatarDatabase}
+                inHome={inHome}
+                setInHome={setInHome}
+              />
+            </>
           }
         />
         {possibleLvls.map((item) => {
@@ -369,46 +370,66 @@ const App = () => {
               key={uniqid()}
               path={`/level/${item}`}
               element={
-                <Level
-                  lvl={item}
-                  imgDatabase={imgDatabase[item - 1]}
-                  avatarDatabase={avatarDatabase}
-                  setInHome={setInHome}
-                  chosenCharacter={chosenCharacter}
-                  setChosenCharacter={setChosenCharacter}
-                  foundCharacters={foundCharacters}
-                  setFoundCharacters={setFoundCharacters}
-                  isGameOver={isGameOver}
-                  show={show}
-                  setShow={setShow}
-                  clickLocation={clickLocation}
-                  imageClick={imageClick}
-                  showFinal={showFinal}
-                  userName={userName}
-                  setUserName={setUserName}
-                  finalTime={finalTime}
-                  handleInput={handleInput}
-                  handleFinalSubmit={handleFinalSubmit}
-                  showLoading={showLoading}
-                  setShowLoading={setShowLoading}
-                  showCheck={showCheck}
-                  setShowCheck={setShowCheck}
-                  showWrong={showWrong}
-                  setShowWrong={setShowWrong}
-                />
+                <>
+                  <Header
+                    lvl={item}
+                    imgDatabase={imgDatabase[item - 1]}
+                    avatarDatabase={avatarDatabase}
+                    inHome={inHome}
+                    foundCharacters={foundCharacters}
+                    setFoundCharacters={setFoundCharacters}
+                    time={time}
+                    setTime={setTime}
+                    isGameOver={isGameOver}
+                    resetGame={resetGame}
+                  />
+                  <Level
+                    lvl={item}
+                    setLvl={setLvl}
+                    imgDatabase={imgDatabase[item - 1]}
+                    avatarDatabase={avatarDatabase}
+                    setInHome={setInHome}
+                    chosenCharacter={chosenCharacter}
+                    setChosenCharacter={setChosenCharacter}
+                    foundCharacters={foundCharacters}
+                    setFoundCharacters={setFoundCharacters}
+                    isGameOver={isGameOver}
+                    show={show}
+                    setShow={setShow}
+                    clickLocation={clickLocation}
+                    imageClick={imageClick}
+                    showFinal={showFinal}
+                    userName={userName}
+                    setUserName={setUserName}
+                    finalTime={finalTime}
+                    handleInput={handleInput}
+                    handleFinalSubmit={handleFinalSubmit}
+                    showLoading={showLoading}
+                    setShowLoading={setShowLoading}
+                    showCheck={showCheck}
+                    setShowCheck={setShowCheck}
+                    showWrong={showWrong}
+                    setShowWrong={setShowWrong}
+                  />
+                </>
               }
             />
           );
         })}
         <Route
           path="/highscores"
-          element={<Highscores highscores={highscores} />}
+          element={
+            <>
+              <Header inHome={true} setTime={setTime} isGameOver={true} />
+              <Highscores highscores={highscores} />
+            </>
+          }
         />
         <Route
           path="*"
           element={
             <main style={{ padding: "1rem" }}>
-              <p>Route not found!</p>
+              <p>Page not found!</p>
             </main>
           }
         />
