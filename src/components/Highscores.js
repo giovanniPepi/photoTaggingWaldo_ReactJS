@@ -19,7 +19,7 @@ const Highscores = ({ highscores }) => {
               });
               return item.map((subItem) => {
                 return (
-                  <tr>
+                  <tr key={uniqid()} className="highscoreRow">
                     <td key={uniqid()} className="highscoreItem">
                       {subItem.lvl}
                     </td>
