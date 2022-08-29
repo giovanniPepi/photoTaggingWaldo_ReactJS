@@ -3,8 +3,8 @@ import uniqid from "uniqid";
 const Highscores = ({ highscores }) => {
   return (
     <>
-      <h2 className="highscoresTitle">Highscores</h2>
       <section className="highscoreContainer">
+        <h2 className="highscoresTitle">Highscores</h2>
         <table>
           <th>Level</th>
           <th>Name</th>
