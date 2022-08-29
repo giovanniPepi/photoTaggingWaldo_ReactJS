@@ -1,11 +1,12 @@
 import uniqid from "uniqid";
 
-const Highscores = ({ highscoreListLevelOne }) => {
+const Highscores = ({ highscores }) => {
   return (
     <>
       <h2 className="highscoresTitle">Highscores</h2>
       <section className="highscoreContainer">
-        {highscoreListLevelOne.map((item) => {
+        <h3>Level 01: </h3>
+        {highscores.map((item) => {
           return (
             <p key={uniqid()} className="highscoreItem">
               User {item.userName} - {item.time} s

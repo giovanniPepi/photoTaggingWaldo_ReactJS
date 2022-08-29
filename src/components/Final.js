@@ -5,7 +5,6 @@ const Final = ({
   userName,
   setUserName,
   finalTime,
-  showFinalMessage,
   handleInput,
   handleFinalSubmit,
   foundCharacters,

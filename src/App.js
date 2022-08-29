@@ -139,10 +139,6 @@ const App = () => {
     setUserName(event.target.value);
   };
 
-  const showFinalMessage = () => {
-    console.log("You have entered the final info thx", userName);
-  };
-
   const resetGame = () => {
     setLvl(1);
     setChosenCharacter("default");
@@ -175,21 +171,24 @@ const App = () => {
 
     setShowFinal(false);
     console.log("added to firestore");
-    showFinalMessage();
     resetGame();
   };
 
   //highscores
-  const colRefHighscore = collection(db, "1");
-  const highscoreListLevelOne = [];
+  const highscores = [];
 
+  // loops through each level
   const getHighscoresFromFirestore = async () => {
-    const docsHighscore = await getDocs(colRefHighscore);
-    docsHighscore.forEach((doc) => {
-      highscoreListLevelOne.push(doc.data());
-    });
-
-    console.log(highscoreListLevelOne);
+    for (let i = 0; i < 6; i++) {
+      const highscoreMock = [];
+      const docsHighscore = await getDocs(collection(db, `${i}`));
+      docsHighscore.forEach((doc) => {
+        highscoreMock.push(doc.data());
+        highscores.push(highscoreMock);
+        console.log("end turn");
+      });
+    }
+    console.log(highscores);
   };
 
   getHighscoresFromFirestore();
@@ -395,7 +394,6 @@ const App = () => {
                   setUserName={setUserName}
                   finalTime={finalTime}
                   handleInput={handleInput}
-                  showFinalMessage={showFinalMessage}
                   handleFinalSubmit={handleFinalSubmit}
                   showLoading={showLoading}
                   setShowLoading={setShowLoading}
@@ -410,7 +408,7 @@ const App = () => {
         })}
         <Route
           path="/highscores"
-          element={<Highscores highscoreListLevelOne={highscoreListLevelOne} />}
+          element={<Highscores highscores={highscores} />}
         />
         <Route
           path="*"
