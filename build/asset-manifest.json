@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d6139a29.css",
+    "main.js": "/static/js/main.7166eb23.js",
+    "static/media/waldo_level-3.jpg": "/static/media/waldo_level-3.cbda96b1bc9574b2883b.jpg",
+    "static/media/waldo_level-5.jpg": "/static/media/waldo_level-5.8ad7284f66614fbf2fa4.jpg",
+    "static/media/waldo_level-6.jpg": "/static/media/waldo_level-6.f69683cfb073b58d922f.jpg",
+    "static/media/waldo_level-2.jpg": "/static/media/waldo_level-2.df92acace3987b9e1eee.jpg",
+    "static/media/waldo_level-4.jpg": "/static/media/waldo_level-4.3e3e1cd7e2a1856d607d.jpg",
+    "static/media/waldo_1.jpg": "/static/media/waldo_1.8b871ac1382de68197ba.jpg",
+    "static/media/waldoAvatar.jpg": "/static/media/waldoAvatar.1e2ee91f0cfa0ceeb550.jpg",
+    "static/media/OdlawAvatar.jpg": "/static/media/OdlawAvatar.f34b5260e086e9e07982.jpg",
+    "static/media/waldoHeader.jpg": "/static/media/waldoHeader.a021db903d06012b257c.jpg",
+    "index.html": "/index.html",
+    "main.d6139a29.css.map": "/static/css/main.d6139a29.css.map",
+    "main.7166eb23.js.map": "/static/js/main.7166eb23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6139a29.css",
+    "static/js/main.7166eb23.js"
+  ]
+}
