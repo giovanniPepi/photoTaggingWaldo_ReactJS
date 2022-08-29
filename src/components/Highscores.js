@@ -6,9 +6,14 @@ const Highscores = ({ highscores }) => {
       <section className="highscoreContainer">
         <h2 className="highscoresTitle">Highscores</h2>
         <table>
-          <th>Level</th>
-          <th>Name</th>
-          <th>Time</th>
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+
           <tbody>
             {/* Each array item is a level*/}
             {highscores.map((item) => {
