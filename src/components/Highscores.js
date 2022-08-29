@@ -9,7 +9,7 @@ const Highscores = ({ highscores }) => {
           return item.map((subItem) => {
             return (
               <p key={uniqid()} className="highscoreItem">
-                User {subItem.userName} - {subItem.time} s
+                Level {subItem.lvl} - {subItem.userName} - {subItem.time}s
               </p>
             );
           });

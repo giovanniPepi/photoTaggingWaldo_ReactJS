@@ -17,14 +17,9 @@ import wendaMini from "../src/img/wenda.jpg";
 import wizardMini from "../src/img/wizardAvatar.jpg";
 import { db } from "./firebase";
 import {
-  doc,
-  setDoc,
   collection,
   getDocs,
   addDoc,
-  query,
-  where,
-  Timestamp,
   serverTimestamp,
 } from "firebase/firestore";
 import Highscores from "./components/Highscores";
@@ -106,6 +101,7 @@ const App = () => {
   const [showLoading, setShowLoading] = useState(false);
   const [showWrong, setShowWrong] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
+  const [highscores, setHighscores] = useState([]);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
@@ -141,6 +137,7 @@ const App = () => {
 
   const resetGame = () => {
     setLvl(1);
+    setInHome(true);
     setChosenCharacter("default");
     setFoundCharacters([]);
     setTime(0);
@@ -166,6 +163,7 @@ const App = () => {
     await addDoc(docRef, {
       userName,
       time,
+      lvl,
       timestamp: serverTimestamp(),
     });
 
@@ -174,33 +172,27 @@ const App = () => {
     resetGame();
   };
 
-  //highscores
-  const highscores = [];
-
-  // loops through each level
-  const getHighscoresFromFirestore = async () => {
-    for (let i = 0; i < 6; i++) {
-      const highscoreMock = [];
-      const docsHighscore = await getDocs(collection(db, `${i}`));
-      docsHighscore.forEach((doc) => {
-        highscoreMock.push(doc.data());
-        highscores.push(highscoreMock);
-        console.log("end turn");
-      });
-    }
-    console.log(highscores);
-  };
-
-  getHighscoresFromFirestore();
-
   useEffect(() => {
-    // info
-    /*     console.log(
-      "isGameOver:",
-      isGameOver,
-      "found characters: ",
-      foundCharacters.toString()
-    ); */
+    //highscores
+    const highscores = [];
+
+    // loops through each level
+    const getHighscoresFromFirestore = async () => {
+      for (let i = 0; i < 6; i++) {
+        const highscoreMock = [];
+        const docsHighscore = await getDocs(collection(db, `${i}`));
+        docsHighscore.forEach((doc) => {
+          highscoreMock.push(doc.data());
+        });
+
+        highscores.push(highscoreMock);
+      }
+      console.log(highscores);
+      setHighscores(highscores);
+    };
+
+    getHighscoresFromFirestore();
+
     if (!isGameOver) {
       setShowFinal(false);
       // Firebase
@@ -384,7 +376,6 @@ const App = () => {
                   foundCharacters={foundCharacters}
                   setFoundCharacters={setFoundCharacters}
                   isGameOver={isGameOver}
-                  setIsGameOver={setIsGameOver}
                   show={show}
                   setShow={setShow}
                   clickLocation={clickLocation}
