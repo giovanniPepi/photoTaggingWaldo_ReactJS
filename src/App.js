@@ -107,22 +107,6 @@ const App = () => {
   const [showWrong, setShowWrong] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
 
-  // highscores
-  const colRefHighscore = collection(db, "highscores");
-  const highscoreList = [];
-
-  const getHighscoresFromFirestore = async () => {
-    const docsHighscore = await getDocs(colRefHighscore);
-    docsHighscore.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
-
-    /* docsHighscore.forEach((doc) => {
-      highscoreList.push({ ...doc.data() });
-    }); */
-  };
-  getHighscoresFromFirestore();
-
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
     const x = Math.round(
@@ -195,14 +179,29 @@ const App = () => {
     resetGame();
   };
 
+  //highscores
+  const colRefHighscore = collection(db, "1");
+  const highscoreListLevelOne = [];
+
+  const getHighscoresFromFirestore = async () => {
+    const docsHighscore = await getDocs(colRefHighscore);
+    docsHighscore.forEach((doc) => {
+      highscoreListLevelOne.push(doc.data());
+    });
+
+    console.log(highscoreListLevelOne);
+  };
+
+  getHighscoresFromFirestore();
+
   useEffect(() => {
     // info
-    console.log(
+    /*     console.log(
       "isGameOver:",
       isGameOver,
       "found characters: ",
       foundCharacters.toString()
-    );
+    ); */
     if (!isGameOver) {
       setShowFinal(false);
       // Firebase
@@ -411,7 +410,7 @@ const App = () => {
         })}
         <Route
           path="/highscores"
-          element={<Highscores highscoreList={highscoreList} />}
+          element={<Highscores highscoreListLevelOne={highscoreListLevelOne} />}
         />
         <Route
           path="*"
