@@ -13,10 +13,12 @@ const Header = ({
   setTime,
   isGameOver,
   resetGame,
+  showHighscores,
+  setShowHighscores,
 }) => {
   return (
     <section className="header">
-      {inHome ? (
+      {inHome && !showHighscores ? (
         <>
           <Link to="/">
             <div className="headerAvatarCont">
@@ -29,6 +31,22 @@ const Header = ({
           </Link>
           <Link to="/highscores">
             <button>Highscores</button>
+          </Link>
+        </>
+      ) : null}
+      {showHighscores ? (
+        <>
+          <Link to="/">
+            <div className="headerAvatarCont">
+              <img src={waldoHeader} alt="Waldo" className="waldoHeaderImg" />
+              <div className="headerTitle">
+                <p className="red">Where's</p>
+                <p className="blue">Waldo</p>
+              </div>
+            </div>
+          </Link>
+          <Link to="/" onClick={resetGame}>
+            <button className="gobackBtn">Go back</button>
           </Link>
         </>
       ) : null}

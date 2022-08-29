@@ -102,6 +102,7 @@ const App = () => {
   const [showWrong, setShowWrong] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
   const [highscores, setHighscores] = useState([]);
+  const [showHighcores, setShowHighscores] = useState(false);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
@@ -420,7 +421,12 @@ const App = () => {
           path="/highscores"
           element={
             <>
-              <Header inHome={true} setTime={setTime} isGameOver={true} />
+              <Header
+                inHome={true}
+                setTime={setTime}
+                isGameOver={true}
+                showHighscores={true}
+              />
               <Highscores highscores={highscores} />
             </>
           }
