@@ -17,6 +17,7 @@ const Timer = ({ inHome, time, setTime, isGameOver }) => {
       // avoids absurd times
       if (time > 86400) setTime(0);
 
+      // setInterval cleared when component unmounts
       return () => clearInterval(interval);
     }
   });

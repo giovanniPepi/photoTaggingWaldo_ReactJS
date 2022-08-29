@@ -191,7 +191,10 @@ const App = () => {
       setHighscores(highscores);
     };
 
-    getHighscoresFromFirestore();
+    // avoids getting highscores while in game
+    if (time <= 0) {
+      getHighscoresFromFirestore();
+    }
 
     if (!isGameOver) {
       setShowFinal(false);
