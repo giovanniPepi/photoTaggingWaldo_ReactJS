@@ -44,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://wherewaldo-9d009.web.app/"
+  "homepage": "https://wherewaldo-9d009.web.app/",
+  "devDependencies": {
+    "webpack-cli": "^4.10.0"
+  }
 }
