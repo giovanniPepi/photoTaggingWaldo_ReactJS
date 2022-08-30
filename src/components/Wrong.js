@@ -3,7 +3,7 @@ import Icon from "@mdi/react";
 import { useState } from "react";
 
 const Wrong = () => {
-  const [btnInfo, setBtnInfo] = useState({
+  const [btnInfo] = useState({
     path: mdiClose,
     color: "red",
     size: 1,

@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import Level from "./Levels";
 
 const Home = ({
-  lvl,
   setLvl,
   possibleLvls,
   imgDatabase,
   avatarDatabase,
-  inHome,
   setInHome,
 }) => {
   useEffect(() => {

@@ -160,7 +160,6 @@ const App = () => {
     // this creates a new doc, should only be run once to create each lvl as a doc
 
     const docRef = collection(db, lvl.toString());
-    console.log("firestore add acessed");
     await addDoc(docRef, {
       userName,
       time,
@@ -169,7 +168,7 @@ const App = () => {
     });
 
     setShowFinal(false);
-    console.log("added to firestore");
+    console.log("Added to Firestore");
     resetGame();
   };
 
@@ -179,7 +178,7 @@ const App = () => {
 
     // loops through each level
     const getHighscoresFromFirestore = async () => {
-      console.log("firestore highscore acessed");
+      console.log("Firestore highscore acessed");
       for (let i = 1; i < 7; i++) {
         const highscoreMock = [];
         const docsHighscore = await getDocs(collection(db, `${i}`));
@@ -189,7 +188,6 @@ const App = () => {
 
         highscores.push(highscoreMock);
       }
-      console.log(highscores);
       setHighscores(highscores);
     };
 
@@ -206,7 +204,7 @@ const App = () => {
       const coordList = [];
 
       const getCoordsFromFirestore = async (character, lvl) => {
-        console.log("firestore coords acessed");
+        console.log("Firestore coords acessed");
         setShowLoading(true);
         const docs = await getDocs(colRef);
         docs.forEach((doc) => {
@@ -243,7 +241,7 @@ const App = () => {
               x: coordList[0]["default"][lvl]["x"],
               y: coordList[0]["default"][lvl]["y"],
             };
-            console.log("default or char not found");
+            console.log("Default or character not found");
             return defaultPosition;
         }
       };
@@ -277,28 +275,18 @@ const App = () => {
           yPair[0] - 2 === yPair[1] ||
           yPair[0] - 3 === yPair[1];
 
-        console.log(
-          "clicked: ",
-          coords,
-          "target: ",
-          serverCoords,
-          "conditions summary: ",
-          "winconditionx: ",
-          winConditionX,
-          "winconditionY",
-          winConditionY
-        );
+        console.log("Clicked: ", coords, "Target: ", serverCoords);
 
         if (winConditionX && winConditionY) {
           // avoids finding the same character
           if (foundCharacters.includes(chosenCharacter)) {
-            console.log("alreayd found ", chosenCharacter);
+            console.log("Already found ", chosenCharacter);
             setShowWrong(true);
             return;
           }
 
           setShowCheck(true);
-          console.log(`you've found ${chosenCharacter}`);
+          console.log(`You've found ${chosenCharacter}`);
 
           setFoundCharacters((foundCharacters) => [
             ...foundCharacters,
@@ -306,7 +294,7 @@ const App = () => {
           ]);
         } else {
           setShowWrong(true);
-          console.log("wincondition not met!");
+          console.log(`${chosenCharacter} is in another castle!`);
         }
       };
 
@@ -349,19 +337,16 @@ const App = () => {
                 avatarDatabase={avatarDatabase}
                 inHome={inHome}
                 foundCharacters={foundCharacters}
-                setFoundCharacters={setFoundCharacters}
                 time={time}
                 setTime={setTime}
                 isGameOver={isGameOver}
                 resetGame={resetGame}
               />
               <Home
-                lvl={lvl}
                 setLvl={setLvl}
                 possibleLvls={possibleLvls}
                 imgDatabase={imgDatabase}
                 avatarDatabase={avatarDatabase}
-                inHome={inHome}
                 setInHome={setInHome}
               />
             </>
@@ -380,7 +365,6 @@ const App = () => {
                     avatarDatabase={avatarDatabase}
                     inHome={inHome}
                     foundCharacters={foundCharacters}
-                    setFoundCharacters={setFoundCharacters}
                     time={time}
                     setTime={setTime}
                     isGameOver={isGameOver}
@@ -388,13 +372,10 @@ const App = () => {
                   />
                   <Level
                     lvl={item}
-                    setLvl={setLvl}
                     imgDatabase={imgDatabase[item - 1]}
                     avatarDatabase={avatarDatabase}
                     setInHome={setInHome}
-                    chosenCharacter={chosenCharacter}
                     setChosenCharacter={setChosenCharacter}
-                    foundCharacters={foundCharacters}
                     setFoundCharacters={setFoundCharacters}
                     isGameOver={isGameOver}
                     show={show}

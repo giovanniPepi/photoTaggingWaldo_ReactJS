@@ -3,7 +3,7 @@ import Icon from "@mdi/react";
 import { useState } from "react";
 
 const Loading = () => {
-  const [btnInfo, setBtnInfo] = useState({
+  const [btnInfo] = useState({
     path: mdiLoading,
     color: "#0EA5E9",
     size: 1,

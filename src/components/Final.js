@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Final = ({
-  showFinal,
-  userName,
-  setUserName,
-  finalTime,
-  handleInput,
-  handleFinalSubmit,
-  foundCharacters,
-}) => {
+const Final = ({ showFinal, finalTime, handleInput, handleFinalSubmit }) => {
   return (
     <>
       {showFinal ? (

@@ -11,11 +11,8 @@ const DropdownMenu = ({
   setChosenCharacter,
   isGameOver,
   showLoading,
-  setShowLoading,
   showCheck,
-  setShowCheck,
   showWrong,
-  setShowWrong,
 }) => {
   const handleCharacterChoice = async (character) => {
     // hides menu

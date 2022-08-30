@@ -54,9 +54,9 @@ const Header = ({
         <>
           {!isGameOver ? (
             <Timer
+              inHome={inHome}
               time={time}
               setTime={setTime}
-              inHome={inHome}
               isGameOver={isGameOver}
             />
           ) : null}

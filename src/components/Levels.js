@@ -4,28 +4,20 @@ import DropdownMenu from "./DropdownMenu";
 import Final from "./Final";
 
 const Level = ({
-  lvl,
   imgDatabase,
   avatarDatabase,
   setInHome,
   setChosenCharacter,
-  setFoundCharacters,
+  isGameOver,
   show,
-  setShow,
   clickLocation,
   imageClick,
-  isGameOver,
   showFinal,
-  userName,
-  setUserName,
   finalTime,
   handleInput,
-  showFinalMessage,
   handleFinalSubmit,
   showLoading,
-  setShowLoading,
   showCheck,
-  setShowCheck,
   showWrong,
   setShowWrong,
 }) => {
@@ -44,29 +36,21 @@ const Level = ({
       />
       <DropdownMenu
         show={show}
-        setShow={setShow}
-        lvl={lvl}
         imgDatabase={imgDatabase}
         avatarDatabase={avatarDatabase}
         clickLocation={clickLocation}
         setChosenCharacter={setChosenCharacter}
-        setFoundCharacters={setFoundCharacters}
         isGameOver={isGameOver}
         showLoading={showLoading}
-        setShowLoading={setShowLoading}
         showCheck={showCheck}
-        setShowCheck={setShowCheck}
         showWrong={showWrong}
         setShowWrong={setShowWrong}
       />
       {showFinal ? (
         <Final
           showFinal={showFinal}
-          userName={userName}
-          setUserName={setUserName}
           finalTime={finalTime}
           handleInput={handleInput}
-          showFinalMessage={showFinalMessage}
           handleFinalSubmit={handleFinalSubmit}
           found
         />
