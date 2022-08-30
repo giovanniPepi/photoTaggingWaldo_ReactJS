@@ -173,29 +173,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    //highscores
-    const highscores = [];
-
-    // loops through each level
-    const getHighscoresFromFirestore = async () => {
-      console.log("Firestore highscore acessed");
-      for (let i = 1; i < 7; i++) {
-        const highscoreMock = [];
-        const docsHighscore = await getDocs(collection(db, `${i}`));
-        docsHighscore.forEach((doc) => {
-          highscoreMock.push(doc.data());
-        });
-
-        highscores.push(highscoreMock);
-      }
-      setHighscores(highscores);
-    };
-
-    // avoids getting highscores while in game
-    if (time <= 0) {
-      getHighscoresFromFirestore();
-    }
-
     if (!isGameOver) {
       setShowFinal(false);
       // Firebase
@@ -322,6 +299,7 @@ const App = () => {
     imgDatabase,
     isGameOver,
     time,
+    inHome,
   ]);
 
   return (
@@ -410,7 +388,10 @@ const App = () => {
                 isGameOver={true}
                 showHighscores={true}
               />
-              <Highscores highscores={highscores} />
+              <Highscores
+                highscores={highscores}
+                setHighscores={setHighscores}
+              />
             </>
           }
         />
