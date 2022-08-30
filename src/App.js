@@ -102,7 +102,6 @@ const App = () => {
   const [showWrong, setShowWrong] = useState(false);
   const [showCheck, setShowCheck] = useState(false);
   const [highscores, setHighscores] = useState([]);
-  const [showHighcores, setShowHighscores] = useState(false);
 
   const getImgLocation = (e) => {
     // nativeEvent acess JS property inside the React wrapper
@@ -161,6 +160,7 @@ const App = () => {
     // this creates a new doc, should only be run once to create each lvl as a doc
 
     const docRef = collection(db, lvl.toString());
+    console.log("firestore add acessed");
     await addDoc(docRef, {
       userName,
       time,
@@ -179,6 +179,7 @@ const App = () => {
 
     // loops through each level
     const getHighscoresFromFirestore = async () => {
+      console.log("firestore highscore acessed");
       for (let i = 1; i < 7; i++) {
         const highscoreMock = [];
         const docsHighscore = await getDocs(collection(db, `${i}`));
@@ -205,6 +206,7 @@ const App = () => {
       const coordList = [];
 
       const getCoordsFromFirestore = async (character, lvl) => {
+        console.log("firestore coords acessed");
         setShowLoading(true);
         const docs = await getDocs(colRef);
         docs.forEach((doc) => {

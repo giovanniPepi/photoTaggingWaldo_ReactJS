@@ -4,8 +4,8 @@
   --tinyGap: 0.2rem;
   --redWaldo: #ee2d24;
   --blueWaldo: #009cdd;
-  --lightBlue1: #F0F9FF;
-  --lightBlue2: #E0F2FE;
+  --lightBlue1: #f0f9ff;
+  --lightBlue2: #e0f2fe;
   --color1: #773f41;
   --yellow: #ffef42;
   --roundBorder: 0.5rem;
@@ -86,7 +86,6 @@ tr:nth-child(odd) td {
   background-color: var(--lightBlue2);
 }
 
-
 .button-22:active {
   background-color: #006ae8;
 }
@@ -148,12 +147,91 @@ tr:nth-child(odd) td {
   padding: 0.2rem;
 }
 
-@media screen and (min-width: 900px) {
-  .headerAvatarCont {
-    display: flex;
-    align-items: center;
-    gap: var(--normalGap);
-  }
+.headerAvatarCont {
+  display: flex;
+  align-items: center;
+  gap: var(--normalGap);
+}
+.avatarMini {
+  height: 1.5rem;
+}
+.waldoLvl {
+  position: relative;
+}
+.lvlContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mediumGap);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: var(--roundBorder);
+  transition: all 0.15s cubic-bezier(0.07, 0.75, 0.63, 1.05),
+    transform 0.3s cubic-bezier(0.09, 0.76, 0.57, 1.03);
+}
+
+.lvlImgGrid {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 0 0 var(--roundBorder) var(--roundBorder);
+}
+
+.infoLvl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--mediumGap);
+}
+.avatarsLvl {
+  border-radius: var(--roundBorder);
+  display: flex;
+  gap: var(--tinyGap);
+}
+.avatarLevel {
+  border-radius: var(--roundBorder);
+  height: 2rem;
+  object-fit: contain;
+}
+.scenarioImg {
+  justify-self: center;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+.endgameModal,
+.userName {
+  display: none;
+}
+.endgameModal.visible {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--blueWaldo);
+}
+.endgameModal.visible,
+.userName.visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.endgameBtn {
+  background-color: var(--redWaldo);
+}
+
+.highscoreContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 501px) {
   .header {
     min-height: 10vh;
     justify-content: space-evenly;
@@ -166,84 +244,42 @@ tr:nth-child(odd) td {
     width: 2.2rem;
     padding: 0.5rem;
   }
-  .avatarMini {
-    height: 1.5rem;
-  }
-  .waldoLvl {
-    position: relative;
-  }
   .levelGrid {
     display: grid;
     gap: var(--normalGap);
     grid-template-columns: repeat(3, 1fr);
     margin: 2rem;
   }
-  .lvlContainer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--mediumGap);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: var(--roundBorder);
-    transition: all 0.15s cubic-bezier(0.07, 0.75, 0.63, 1.05),
-      transform 0.3s cubic-bezier(0.09, 0.76, 0.57, 1.03);
-  }
-  .lvlImgGrid {
-    width: 100%;
-    height: 15rem;
-    object-fit: cover;
-    border-radius: 0 0 var(--roundBorder) var(--roundBorder);
-  }
-  .infoLvl {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--mediumGap);
-  }
-  .avatarsLvl {
-    border-radius: var(--roundBorder);
-    display: flex;
-    gap: var(--tinyGap);
-  }
-  .avatarLevel {
-    border-radius: var(--roundBorder);
-    height: 2rem;
-    object-fit: contain;
-  }
-  .scenarioImg {
-    justify-self: center;
-    width: 100%;
-    max-width: 100%;
-    display: block;
-  }
-  .endgameModal,
-  .userName {
-    display: none;
-  }
-  .endgameModal.visible {
-    border: 1px solid black;
-    padding: 1rem;
-    border-radius: 1rem;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--blueWaldo);
-  }
-  .endgameModal.visible,
-  .userName.visible {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .endgameBtn {
-    background-color: var(--redWaldo);
-  }
+
   .charactersPresent {
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    min-height: 10vh;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  .charactersPresent {
+    gap: 0.2rem;
+  }
+
+  .waldoHeaderImg {
+    width: 4rem;
+  }
+  .avatar {
+    width: 1.5rem;
+  }
+  .levelGrid {
+    display: grid;
+    gap: var(--normalGap);
+    grid-template-columns: repeat(1, 1fr);
+    margin: 2rem;
   }
 
   .highscoreContainer {
@@ -252,13 +288,7 @@ tr:nth-child(odd) td {
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
-    }        
-}
-
-@media screen and (min-width: 501px) and (max-width: 899px) {
-}
-
-@media screen and (max-width: 500px) {
+  }
 }
 
 /* -------------------Animations---------------------------------- */

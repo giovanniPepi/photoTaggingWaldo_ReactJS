@@ -14,7 +14,6 @@ const Header = ({
   isGameOver,
   resetGame,
   showHighscores,
-  setShowHighscores,
 }) => {
   return (
     <section className="header">
