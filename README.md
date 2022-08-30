@@ -4,7 +4,7 @@
 <h3>https://wherewaldo-9d009.web.app/</h3>
 <h5>
 
-This project has a few images with hidden characters on each level. Using JavaScript nativeEvent acess, we can acess the image properties inside React's wrapper and find the coordinates in each image. These coordinates are stored in Firebase's Cloud Firestore and checked each time a character is checked, with a few pixels offset as characters may spawn over one or more coordinate. 
+This project has a few images with hidden characters on each level. Using JavaScript nativeEvent, we can acess the image properties inside React's wrapper and find the coordinates in each image. These coordinates are stored in Firebase's Cloud Firestore and checked each time a character is checked, with a few pixels offset as characters may spawn over one or more coordinate. 
 Highscores are store in Cloud Firestore's database
 
 Based on the classic game: 
